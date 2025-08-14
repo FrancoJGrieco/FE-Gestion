@@ -6,6 +6,8 @@ import UpdateProductos from "./pages/UpdateProductos";
 import CreateProductos from "./pages/CreateProductos";
 import Turnos from "./pages/Turnos";
 import Empleados from "./pages/Empleados";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 
 export const router = createBrowserRouter([
 	{
@@ -18,6 +20,8 @@ export const router = createBrowserRouter([
 			{ path: "productos/create", element: <CreateProductos /> },
 			{ path: "turnos", element: <Turnos /> },
 			{ path: "empleados", element: <Empleados /> },
+			{ path: "login", element: <Login /> },
+			{ path: "dashboard", element: <Dashboard /> },
 		],
 	},
 ]);

@@ -28,6 +28,8 @@ export default function PermanentDrawerLeft({ children }) {
 		"Turnos",
 		"Mas herramientas",
 		"Configuracion",
+		"Login",
+		"Dashboard",
 	];
 	
 	return (

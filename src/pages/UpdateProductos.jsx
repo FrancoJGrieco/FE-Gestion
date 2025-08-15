@@ -2,12 +2,13 @@ import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import useGetProducto from "../hooks/useInitializeProducto";
-import updateProducto from "../services/updateProducto";
+import updateDatum from "../services/updateDatum";
 
 export default function UpdateProductos() {
 	const location = useLocation();
 	const id = location.state.producto.id;
 	const { producto } = useGetProducto(id);
+	const type = 'productos'
 
 	const { form, handleFieldChange } = useForm({ element: producto });
 
@@ -45,7 +46,7 @@ export default function UpdateProductos() {
 
 						<Button
 							variant="contained"
-							onClick={(e) => updateProducto(e, form)}
+							onClick={(e) => updateDatum(e, form, type)}
 							sx={{ maxWidth: "100px" }}
 						>
 							Guardar

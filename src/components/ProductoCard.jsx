@@ -1,9 +1,10 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import removeProducto from "../services/removeProducto";
+import removeDatum from "../services/removeDatum";
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
 export default function ProductoCard({ producto }) {
+	const type = 'productos'
 	return (
 		<Box
 		sx={{
@@ -21,7 +22,7 @@ export default function ProductoCard({ producto }) {
 			>
 				<Typography variant="h6">{producto.id}.{producto.name}</Typography>
 			</Box>
-			<IconButton onClick={()=>removeProducto(producto.id)}><RemoveCircleIcon/></IconButton>
+			<IconButton onClick={()=>removeDatum({id: producto.id, type})}><RemoveCircleIcon/></IconButton>
 		</Box>
 	);
 }

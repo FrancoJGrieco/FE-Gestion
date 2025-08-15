@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import fetchProductos from "../services/fetchProductos";
+import fetchData from "../services/fetchData";
 
 export default function useGetProductos() {
 	const [productos, setProductos] = useState(null);
+	const type = 'productos'
 
 	useEffect(() => {
 		(async () => {
-			const data = await fetchProductos();
+			const data = await fetchData({type});
 			setProductos(data);
 		})();
 	}, []);

@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Container, TextField, Typography } from "@mui/material";
 import ProductoCard from "../components/ProductoCard";
 import useGetProductos from "../hooks/useGetProductos";
 import { Link } from "react-router-dom";
@@ -7,8 +7,16 @@ export default function Productos() {
 	const { productos } = useGetProductos();
 
 	return (
-		<div>
-			<h1>Productos</h1>
+		<Container
+			sx={{
+				display: "flex",
+				flexWrap: "wrap",
+				flexDirection: "column",
+				gap: 2
+			}}
+		>
+			<Typography component={'h4'} variant="h4">Productos</Typography>
+			<TextField name='product-filter' label='Producto'></TextField>
 			<Link to='/productos/create'>Create</Link>
 			<Box
 				sx={{
@@ -18,11 +26,9 @@ export default function Productos() {
 				}}
 			>
 				{productos?.map((producto) => (
-					<div key={producto.id}>
-						<ProductoCard producto={producto} />
-					</div>
+					<ProductoCard key={producto.id} producto={producto} />
 				))}
 			</Box>
-		</div>
+		</Container>
 	);
 }

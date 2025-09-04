@@ -8,20 +8,21 @@ import Turnos from "./pages/Turnos";
 import Empleados from "./pages/Empleados";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import RequireAuth from "./components/RequireAuth";
 
 export const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <App />,
 		children: [
-			{ path: "", element: <Home /> },
-			{ path: "productos", element: <Productos /> },
-			{ path: "productos/update/:id", element: <UpdateProductos /> },
-			{ path: "productos/create", element: <CreateProductos /> },
-			{ path: "turnos", element: <Turnos /> },
-			{ path: "empleados", element: <Empleados /> },
+			{ path: "", element: <RequireAuth><Home /></RequireAuth> },
+			{ path: "productos", element: <RequireAuth><Productos /></RequireAuth> },
+			{ path: "productos/update/:id", element: <RequireAuth><UpdateProductos /></RequireAuth> },
+			{ path: "productos/create", element: <RequireAuth><CreateProductos /></RequireAuth> },
+			{ path: "turnos", element: <RequireAuth><Turnos /></RequireAuth> },
+			{ path: "empleados", element: <RequireAuth><Empleados /></RequireAuth> },
 			{ path: "login", element: <Login /> },
-			{ path: "dashboard", element: <Dashboard /> },
+			{ path: "dashboard", element: <RequireAuth><Dashboard /></RequireAuth> },
 		],
 	},
 ]);

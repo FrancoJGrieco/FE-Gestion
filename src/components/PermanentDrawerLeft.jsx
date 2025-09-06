@@ -15,23 +15,42 @@ import {
 } from "@mui/material";
 import * as React from "react";
 import { Link } from "react-router-dom";
+import DrawerImage from "./DrawerImage";
 
 export default function PermanentDrawerLeft({ children }) {
 	const drawerWidth = 240;
 	const optionList = [
-		"Panel de control",
-		"Reportes",
-		"Transacciones",
-		"Productos",
-		"Clientes",
-		"Empleados",
-		"Turnos",
-		"Mas herramientas",
-		"Configuracion",
-		"Login",
-		"Dashboard",
-	];
-	
+		{
+			name: 'Inicio',
+			link: ''
+		},
+		{
+			name: 'Ventas',
+			link: 'ventas'
+		},
+		{
+			name: 'Empleados',
+			link: 'empleados'
+		},
+		{
+			name: 'Productos',
+			link: 'productos'
+		}
+	]
+	// const optionList = [
+	// 	"Panel de control",
+	// 	"Reportes",
+	// 	"Transacciones",
+	// 	"Productos",
+	// 	"Clientes",
+	// 	"Empleados",
+	// 	"Turnos",
+	// 	"Mas herramientas",
+	// 	"Configuracion",
+	// 	"Login",
+	// 	"Dashboard",
+	// ];
+
 	return (
 		<Box sx={{ display: "flex" }}>
 			<CssBaseline />
@@ -40,7 +59,9 @@ export default function PermanentDrawerLeft({ children }) {
 				sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
 			>
 				<Toolbar>
-						<Link to='/'>Tu Store</Link>
+					<Typography variant="h6" noWrap component="div">
+						Tu Store
+					</Typography>
 				</Toolbar>
 			</AppBar>
 			<Drawer
@@ -57,16 +78,16 @@ export default function PermanentDrawerLeft({ children }) {
 			>
 				<Toolbar />
 				<List>
-					{optionList.map((text, index) => (
-						<ListItem key={text} disablePadding>
-							<Link to={`/${text}`}>
-								<ListItemButton>
+					{optionList.map((objeto) => (
+						<ListItem key={objeto.link} disablePadding>
+								<ListItemButton component={Link} 	to={`/${objeto.link}`}>
 									<ListItemIcon>
-										{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+										<DrawerImage name={objeto.name} />
 									</ListItemIcon>
-									<ListItemText primary={text} />
+									<ListItemText primary={objeto.name} sx={{
+
+									}} />
 								</ListItemButton>
-							</Link>
 						</ListItem>
 					))}
 				</List>

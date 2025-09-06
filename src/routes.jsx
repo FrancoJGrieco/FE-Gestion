@@ -9,6 +9,7 @@ import Empleados from "./pages/Empleados";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import RequireAuth from "./components/RequireAuth";
+import Ventas from "./pages/Ventas";
 
 export const router = createBrowserRouter([
 	{
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
 			{ path: "productos/create", element: <RequireAuth><CreateProductos /></RequireAuth> },
 			{ path: "turnos", element: <RequireAuth><Turnos /></RequireAuth> },
 			{ path: "empleados", element: <RequireAuth><Empleados /></RequireAuth> },
+			{ path: "ventas", element: <RequireAuth><Ventas /></RequireAuth> },
 			{ path: "login", element: <Login /> },
 			{ path: "dashboard", element: <RequireAuth><Dashboard /></RequireAuth> },
 		],

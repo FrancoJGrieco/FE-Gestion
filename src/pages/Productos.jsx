@@ -8,7 +8,7 @@ import { useEffect } from "react";
 export default function Productos() {
 	const { productos } = useGetProductos()
 	const [bProductos, setBProductos] = useState("")
-	const [productosFiltrados, setProductosFiltrados] = useState(productos || [])
+	const [productosFiltrados, setProductosFiltrados] = useState([])
 
 	const updateProductosField = (e) => {
 		const {value} = e.target
@@ -20,7 +20,7 @@ export default function Productos() {
 	},[productos])
 
 	const buscarProducto = () => {
-		setProductosFiltrados(productos.filter((producto) => producto.name.includes(bProductos)))
+		setProductosFiltrados(productos.filter((producto) => producto.name.toLowerCase().includes(bProductos.toLowerCase())))
 	}
 
 	return (

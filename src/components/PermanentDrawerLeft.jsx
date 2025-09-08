@@ -1,5 +1,3 @@
-import MailIcon from "@mui/icons-material/Mail";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import {
 	AppBar,
 	Box,
@@ -13,7 +11,6 @@ import {
 	Toolbar,
 	Typography,
 } from "@mui/material";
-import * as React from "react";
 import { Link } from "react-router-dom";
 import DrawerImage from "./DrawerImage";
 
@@ -22,7 +19,7 @@ export default function PermanentDrawerLeft({ children }) {
 	const optionList = [
 		{
 			name: 'Inicio',
-			link: ''
+			link: 'home'
 		},
 		{
 			name: 'Ventas',
@@ -56,11 +53,11 @@ export default function PermanentDrawerLeft({ children }) {
 			<CssBaseline />
 			<AppBar
 				position="fixed"
-				sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+				sx={{ width: 100%{/*`calc(100% - ${drawerWidth}px)`*/}, ml: `${drawerWidth}px`, zIndex:10000}}
 			>
-				<Toolbar>
-					<Typography variant="h6" noWrap component="div">
-						Tu Store
+				<Toolbar sx={{ width: `${drawerWidth}px`}}>
+					<Typography variant="h6" noWrap component={Link} to="/home" sx={{ margin: 'auto', textDecorationLine:'none'}}>
+						<img src="./Logo.png" alt="logo_tuStore" style={{width: 100}}/>
 					</Typography>
 				</Toolbar>
 			</AppBar>

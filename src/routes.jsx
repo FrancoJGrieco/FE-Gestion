@@ -16,7 +16,7 @@ export const router = createBrowserRouter([
 		path: "/",
 		element: <App />,
 		children: [
-			{ path: "", element: <RequireAuth><Home /></RequireAuth> },
+			{ path: "home", element: <RequireAuth><Home /></RequireAuth> },
 			{ path: "productos", element: <RequireAuth><Productos /></RequireAuth> },
 			{ path: "productos/update/:id", element: <RequireAuth><UpdateProductos /></RequireAuth> },
 			{ path: "productos/create", element: <RequireAuth><CreateProductos /></RequireAuth> },

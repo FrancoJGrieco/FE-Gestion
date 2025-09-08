@@ -47,7 +47,6 @@ export function AuthProvider({ children }) {
       await axios.post(import.meta.env.VITE_API_URL + 'login', loginForm, {
         withCredentials: true
       })
-      console.log('hola')
       setLoggedIn(true)
       setLoginForm({ user: '', password: '' })
     } catch (err) {

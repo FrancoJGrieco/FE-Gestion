@@ -20,7 +20,7 @@ export default function ProductoCard({ producto }) {
 				state={{ producto: producto }}
 				sx={{ textDecoration: 'none' }}
 			>
-				<Typography variant="h6">{producto.id}.{producto.name}</Typography>
+				<Typography variant="h6">{producto.name} - {producto.codigo}</Typography>
 			</Box>
 			<IconButton onClick={()=>removeDatum({id: producto.id, type})}><RemoveCircleIcon/></IconButton>
 		</Box>

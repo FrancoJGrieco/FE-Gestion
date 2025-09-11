@@ -3,14 +3,21 @@ import { useLocation } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import useGetProducto from "../hooks/useInitializeProducto";
 import updateDatum from "../services/updateDatum";
+import { useNavigate } from "react-router-dom";
+
 
 export default function UpdateProductos() {
 	const location = useLocation();
 	const id = location.state.producto.id;
 	const { producto } = useGetProducto(id);
+	const navigate = useNavigate()
 	const type = 'productos'
-
 	const { form, handleFieldChange } = useForm({ element: producto });
+
+	const updateProducto = async (e) => {
+		updateDatum(e, form, type)
+		navigate('/productos')
+	}
 
 	return (
 		<>
@@ -46,7 +53,7 @@ export default function UpdateProductos() {
 
 						<Button
 							variant="contained"
-							onClick={(e) => updateDatum(e, form, type)}
+							onClick={(e) => updateProducto(e)}
 							sx={{ maxWidth: "100px" }}
 						>
 							Guardar

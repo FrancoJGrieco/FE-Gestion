@@ -11,6 +11,7 @@ import Dashboard from "./pages/Dashboard";
 import RequireAuth from "./components/RequireAuth";
 import Ventas from "./pages/Ventas";
 import CreateVentas from "./pages/CreateVentas";
+import InfoVenta from "./pages/InfoVenta";
 
 export const router = createBrowserRouter([
 	{
@@ -19,12 +20,13 @@ export const router = createBrowserRouter([
 		children: [
 			{ path: "home", element: <RequireAuth><Home /></RequireAuth> },
 			{ path: "productos", element: <RequireAuth><Productos /></RequireAuth> },
-			{ path: "productos/update/:id", element: <RequireAuth><UpdateProductos /></RequireAuth> },
 			{ path: "productos/create", element: <RequireAuth><CreateProductos /></RequireAuth> },
+			{ path: "productos/update/:id", element: <RequireAuth><UpdateProductos /></RequireAuth> },
 			{ path: "turnos", element: <RequireAuth><Turnos /></RequireAuth> },
 			{ path: "empleados", element: <RequireAuth><Empleados /></RequireAuth> },
 			{ path: "ventas", element: <RequireAuth><Ventas /></RequireAuth> },
 			{ path: "ventas/create", element: <RequireAuth><CreateVentas /></RequireAuth> },
+			{ path: "ventas/info/:id", element: <RequireAuth><InfoVenta /></RequireAuth> },
 			{ path: "login", element: <Login /> },
 			{ path: "dashboard", element: <RequireAuth><Dashboard /></RequireAuth> },
 		],

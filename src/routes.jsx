@@ -18,6 +18,8 @@ export const router = createBrowserRouter([
 		path: "/",
 		element: <App />,
 		children: [
+			{ path: "", element: <RequireAuth><Home /></RequireAuth> },
+			{ path: "*", element: <RequireAuth><Home /></RequireAuth> },
 			{ path: "home", element: <RequireAuth><Home /></RequireAuth> },
 			{ path: "productos", element: <RequireAuth><Productos /></RequireAuth> },
 			{ path: "productos/create", element: <RequireAuth><CreateProductos /></RequireAuth> },
@@ -27,8 +29,8 @@ export const router = createBrowserRouter([
 			{ path: "ventas", element: <RequireAuth><Ventas /></RequireAuth> },
 			{ path: "ventas/create", element: <RequireAuth><CreateVentas /></RequireAuth> },
 			{ path: "ventas/info/:id", element: <RequireAuth><InfoVenta /></RequireAuth> },
-			{ path: "login", element: <Login /> },
 			{ path: "dashboard", element: <RequireAuth><Dashboard /></RequireAuth> },
+			{ path: "login", element: <Login /> },
 		],
 	},
 ]);

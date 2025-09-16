@@ -16,7 +16,7 @@ export default function CuentaCard({ cuenta }) {
 		>
 			<Box
 				component={Link}
-				to={`/empleados/update/${cuenta.id}`}
+				to={`/cuentas/update/${cuenta.id}`}
 				state={{ empleado: cuenta }}
 				sx={{ textDecoration: 'none' }}
 			>

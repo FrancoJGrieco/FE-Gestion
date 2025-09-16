@@ -1,4 +1,4 @@
-import EmpleadoCard from "../components/CuentaCard";
+import EmpleadoCard from "../components/EmpleadoCard";
 import ListPage from "../components/ListPage";
 import useFetch from "../hooks/useFetch";
 

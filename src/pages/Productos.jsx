@@ -1,28 +1,14 @@
-import { Box } from "@mui/material";
+import useFetch from "../hooks/useFetch";
 import ProductoCard from "../components/ProductoCard";
-import useGetProductos from "../hooks/useGetProductos";
-import { Link } from "react-router-dom";
+import ListPage from "../components/ListPage";
 
 export default function Productos() {
-	const { productos } = useGetProductos();
+	const type = 'productos'
+	const { elementos: productos } = useFetch(type)
 
 	return (
-		<div>
-			<h1>Productos</h1>
-			<Link to='/productos/create'>Create</Link>
-			<Box
-				sx={{
-					display: "flex",
-					flexWrap: "wrap",
-					gap: 1,
-				}}
-			>
-				{productos?.map((producto) => (
-					<div key={producto.id}>
-						<ProductoCard producto={producto} />
-					</div>
-				))}
-			</Box>
-		</div>
-	);
+		<ListPage type={type} title={'Productos'} elementos={productos}>
+			{(producto) => <ProductoCard producto={producto} />}
+		</ListPage>
+	)
 }

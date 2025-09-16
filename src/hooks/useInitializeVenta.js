@@ -1,21 +1,18 @@
 import { useEffect, useState } from "react";
 import fetchDatum from "../services/fetchDatum";
-import { productosForm } from "../services/productos/productosForm";
 
 export default function useInitializeProducto(id) {
-	const [producto, setProducto] = useState(null);
-	const type = 'productos'
+	const [venta, setVenta] = useState(null);
+	const type = 'ventas'
 
 	useEffect(() => {
 		(async () => {
 			if (id) {
 				const data = await fetchDatum({id, type});
-				setProducto(data);
-			} else {
-				setProducto(productosForm);
+				setVenta(data);
 			}
 		})();
 	}, [id]);
 
-	return { producto };
+	return { venta };
 }

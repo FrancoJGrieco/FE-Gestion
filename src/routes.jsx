@@ -6,18 +6,57 @@ import UpdateProductos from "./pages/UpdateProductos";
 import CreateProductos from "./pages/CreateProductos";
 import Turnos from "./pages/Turnos";
 import Empleados from "./pages/Empleados";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import RequireAuth from "./components/RequireAuth";
+import Ventas from "./pages/Ventas";
+import CreateVentas from "./pages/CreateVentas";
+import InfoVenta from "./pages/InfoVenta";
+import { ResourceProvider } from "./components/resourceProvider";
+import Roles from "./pages/Roles";
+import Cuentas from "./pages/Cuentas";
 
 export const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <App />,
 		children: [
-			{ path: "", element: <Home /> },
-			{ path: "productos", element: <Productos /> },
-			{ path: "productos/update/:id", element: <UpdateProductos /> },
-			{ path: "productos/create", element: <CreateProductos /> },
-			{ path: "turnos", element: <Turnos /> },
-			{ path: "empleados", element: <Empleados /> },
+			{ path: "", element: <RequireAuth><Home /></RequireAuth> },
+			{ path: "*", element: <RequireAuth><Home /></RequireAuth> },
+			{ path: "home", element: <RequireAuth><Home /></RequireAuth> },
+			{
+				path: "productos", element:
+					<RequireAuth>
+						<ResourceProvider>
+							<Productos />
+						</ResourceProvider>
+					</RequireAuth>
+			},
+			{ path: "productos/create", element: <RequireAuth><CreateProductos /></RequireAuth> },
+			{ path: "productos/update/:id", element: <RequireAuth><UpdateProductos /></RequireAuth> },
+			{ path: "turnos", element: <RequireAuth><Turnos /></RequireAuth> },
+			{
+				path: "empleados", element:
+					<RequireAuth>
+						<ResourceProvider>
+							<Empleados />
+						</ResourceProvider>
+					</RequireAuth>
+			},
+			{
+				path: "cuentas", element:
+					<RequireAuth>
+						<ResourceProvider>
+							<Cuentas />
+						</ResourceProvider>
+					</RequireAuth>
+			},
+			{ path: "ventas", element: <RequireAuth><Ventas /></RequireAuth> },
+			{ path: "ventas/create", element: <RequireAuth><CreateVentas /></RequireAuth> },
+			{ path: "ventas/info/:id", element: <RequireAuth><InfoVenta /></RequireAuth> },
+			{ path: "dashboard", element: <RequireAuth><Dashboard /></RequireAuth> },
+			{ path: "roles", element: <RequireAuth><Roles /></RequireAuth> },
+			{ path: "login", element: <Login /> },
 		],
 	},
 ]);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function useForm({ element = null } = {}) {
-	const [form, setForm] = useState({	name: '', price: 0.0, cant: 0});
+	const [form, setForm] = useState({	name: '', codigo: '', price: 0.0, cant: 0});
 
 	useEffect(()=>{
 		if(element){

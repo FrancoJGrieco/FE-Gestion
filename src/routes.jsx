@@ -12,6 +12,7 @@ import RequireAuth from "./components/RequireAuth";
 import Ventas from "./pages/Ventas";
 import CreateVentas from "./pages/CreateVentas";
 import InfoVenta from "./pages/InfoVenta";
+import { ResourceProvider } from "./components/resourceProvider";
 
 export const router = createBrowserRouter([
 	{
@@ -21,7 +22,14 @@ export const router = createBrowserRouter([
 			{ path: "", element: <RequireAuth><Home /></RequireAuth> },
 			{ path: "*", element: <RequireAuth><Home /></RequireAuth> },
 			{ path: "home", element: <RequireAuth><Home /></RequireAuth> },
-			{ path: "productos", element: <RequireAuth><Productos /></RequireAuth> },
+			{
+				path: "productos", element:
+					<RequireAuth>
+						<ResourceProvider>
+							<Productos />
+						</ResourceProvider>
+					</RequireAuth>
+			},
 			{ path: "productos/create", element: <RequireAuth><CreateProductos /></RequireAuth> },
 			{ path: "productos/update/:id", element: <RequireAuth><UpdateProductos /></RequireAuth> },
 			{ path: "turnos", element: <RequireAuth><Turnos /></RequireAuth> },

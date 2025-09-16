@@ -1,5 +1,7 @@
-export default function FieldChange() {
-	const [form, setForm] = null;
+import { useState } from "react";
+
+export default function useHandleFieldChange() {
+	const [form, setForm] = useState(null);
 
 	const handleFieldChange = (e) => {
 		const { name, value } = e.target;
@@ -10,5 +12,5 @@ export default function FieldChange() {
 		}));
 	};
 
-	return { form, handleFieldChange };
+	return { form, handleFieldChange, };
 }

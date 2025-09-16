@@ -1,14 +1,11 @@
 import { Box, Button, Container, TextField } from "@mui/material";
 import useForm from "../hooks/useForm";
 import CreateData from "../services/createData";
-import { useContext } from "react";
-import { ProductosContext } from "../hooks/productos";
 import { useNavigate } from "react-router-dom";
 
 
 export default function CreateProductos() {
   const { form, handleFieldChange } = useForm({})
-  const {actualizarProductos} = useContext(ProductosContext)
   const navigate = useNavigate()
   const type = 'productos'
 
@@ -18,9 +15,7 @@ export default function CreateProductos() {
         throw new Error("El precio no puede ser 0")
       }
 
-      const data = await CreateData({ form, type })
-
-      actualizarProductos(data.data.producto)
+      await CreateData({ form, type })
 
       navigate('/productos')
     } catch (err) {

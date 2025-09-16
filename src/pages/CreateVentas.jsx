@@ -1,10 +1,8 @@
 import { Box, Button, Container, Select, TextField } from "@mui/material";
 import CreateData from "../services/createData";
-import { useContext, useState } from "react";
-import { ProductosContext } from "../hooks/productos";
+import { useState } from "react";
 
 export default function CreateVentas() {
-  const { productos, actualizarProductos } = useContext(ProductosContext)
   const [productosVenta, setProductosVentas] = useState([])
   const [form, setForm] = useState({
     producto: '',
@@ -22,13 +20,13 @@ export default function CreateVentas() {
   };
 
   const agregarProductoLista = () => {
-    const productoFiltrado = productos.find((producto) => producto.codigo === form.producto)
+    // const productoFiltrado = productos.find((producto) => producto.codigo === form.producto)
 
-    const item = { producto: productoFiltrado, cantidad: form.cantidad }
+    // const item = { producto: productoFiltrado, cantidad: form.cantidad }
 
-    if (productoFiltrado) {
-      setProductosVentas((prevState) => [...prevState, item])
-    }
+    // if (productoFiltrado) {
+    //   setProductosVentas((prevState) => [...prevState, item])
+    // }
   }
 
   const crearVenta = async () => {
@@ -36,7 +34,7 @@ export default function CreateVentas() {
     if (updateSuccess.data.success) {
       productosVenta.map((producto) => {
         producto.producto.cant = producto.producto.cant - producto.cantidad
-        actualizarProductos(producto)
+        // actualizarProductos(producto)
       })
     }
   }

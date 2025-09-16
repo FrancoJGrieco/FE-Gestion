@@ -41,18 +41,20 @@ export default function PermanentDrawerLeft({ children }) {
 			name: 'Cuentas',
 			link: 'cuentas'
 		},
+		{
+			name: 'Turnos',
+			link: 'turnos'
+		},
+		{
+			name: 'Configuracion',
+			link: 'configuracion'
+		},
 	]
 	// const optionList = [
 	// 	"Panel de control",
 	// 	"Reportes",
-	// 	"Transacciones",
-	// 	"Productos",
-	// 	"Clientes",
-	// 	"Empleados",
-	// 	"Turnos",
 	// 	"Mas herramientas",
 	// 	"Configuracion",
-	// 	"Login",
 	// 	"Dashboard",
 	// ];
 
@@ -89,9 +91,7 @@ export default function PermanentDrawerLeft({ children }) {
 									<ListItemIcon>
 										<DrawerImage name={objeto.name} />
 									</ListItemIcon>
-									<ListItemText primary={objeto.name} sx={{
-
-									}} />
+									<ListItemText primary={objeto.name} />
 								</ListItemButton>
 						</ListItem>
 					))}

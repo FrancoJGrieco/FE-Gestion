@@ -14,7 +14,13 @@ export default function ListPage({ type, title, elementos, children }) {
         gap: 2
       }}
     >
-      <Typography component={'h4'} variant="h4">{title}</Typography>
+      <Typography
+        component="h3"
+        variant="h3"
+        sx={{
+          margin: 'auto'
+        }}
+      >{title}</Typography>
 
       {/* Creacion de elementos */}
       <CreateButton type={type} />

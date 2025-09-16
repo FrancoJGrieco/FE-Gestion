@@ -1,9 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+import { ResourceProvider } from "./components/resourceProvider";
 import App from "./App";
 import Home from "./pages/Home";
 import Productos from "./pages/Productos";
-import UpdateProductos from "./pages/UpdateProductos";
-import CreateProductos from "./pages/CreateProductos";
 import Turnos from "./pages/Turnos";
 import Empleados from "./pages/Empleados";
 import Login from "./pages/Login";
@@ -12,10 +11,10 @@ import RequireAuth from "./components/RequireAuth";
 import Ventas from "./pages/Ventas";
 import CreateVentas from "./pages/CreateVentas";
 import InfoVenta from "./pages/InfoVenta";
-import { ResourceProvider } from "./components/resourceProvider";
 import Roles from "./pages/Roles";
 import Cuentas from "./pages/Cuentas";
 import FormProductos from "./pages/FormProductos";
+import Configuracion from "./pages/Configuracion";
 
 export const router = createBrowserRouter([
 	{
@@ -85,7 +84,9 @@ export const router = createBrowserRouter([
 			{
 				path: "ventas", element:
 					<RequireAuth>
-						<Ventas />
+						<ResourceProvider>
+							<Ventas />
+						</ResourceProvider>
 					</RequireAuth>
 			},
 			{
@@ -110,6 +111,12 @@ export const router = createBrowserRouter([
 				path: "roles", element:
 					<RequireAuth>
 						<Roles />
+					</RequireAuth>
+			},
+			{
+				path: "configuracion", element:
+					<RequireAuth>
+						<Configuracion />
 					</RequireAuth>
 			},
 			{ path: "login", element: <Login /> },

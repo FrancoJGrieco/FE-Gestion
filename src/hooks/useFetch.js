@@ -16,6 +16,7 @@ export default function useFetch(type) {
 
   useEffect(() => {
     getElementos()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pagina, cantidad, busqueda])
 
   return { elementos }

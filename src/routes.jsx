@@ -13,6 +13,8 @@ import Ventas from "./pages/Ventas";
 import CreateVentas from "./pages/CreateVentas";
 import InfoVenta from "./pages/InfoVenta";
 import { ResourceProvider } from "./components/resourceProvider";
+import Roles from "./pages/Roles";
+import Cuentas from "./pages/Cuentas";
 
 export const router = createBrowserRouter([
 	{
@@ -41,10 +43,19 @@ export const router = createBrowserRouter([
 						</ResourceProvider>
 					</RequireAuth>
 			},
+			{
+				path: "cuentas", element:
+					<RequireAuth>
+						<ResourceProvider>
+							<Cuentas />
+						</ResourceProvider>
+					</RequireAuth>
+			},
 			{ path: "ventas", element: <RequireAuth><Ventas /></RequireAuth> },
 			{ path: "ventas/create", element: <RequireAuth><CreateVentas /></RequireAuth> },
 			{ path: "ventas/info/:id", element: <RequireAuth><InfoVenta /></RequireAuth> },
 			{ path: "dashboard", element: <RequireAuth><Dashboard /></RequireAuth> },
+			{ path: "roles", element: <RequireAuth><Roles /></RequireAuth> },
 			{ path: "login", element: <Login /> },
 		],
 	},

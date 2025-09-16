@@ -32,7 +32,15 @@ export default function PermanentDrawerLeft({ children }) {
 		{
 			name: 'Productos',
 			link: 'productos'
-		}
+		},
+		{
+			name: 'Roles',
+			link: 'roles'
+		},
+		{
+			name: 'Cuentas',
+			link: 'cuentas'
+		},
 	]
 	// const optionList = [
 	// 	"Panel de control",

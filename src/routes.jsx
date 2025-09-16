@@ -33,7 +33,14 @@ export const router = createBrowserRouter([
 			{ path: "productos/create", element: <RequireAuth><CreateProductos /></RequireAuth> },
 			{ path: "productos/update/:id", element: <RequireAuth><UpdateProductos /></RequireAuth> },
 			{ path: "turnos", element: <RequireAuth><Turnos /></RequireAuth> },
-			{ path: "empleados", element: <RequireAuth><Empleados /></RequireAuth> },
+			{
+				path: "empleados", element:
+					<RequireAuth>
+						<ResourceProvider>
+							<Empleados />
+						</ResourceProvider>
+					</RequireAuth>
+			},
 			{ path: "ventas", element: <RequireAuth><Ventas /></RequireAuth> },
 			{ path: "ventas/create", element: <RequireAuth><CreateVentas /></RequireAuth> },
 			{ path: "ventas/info/:id", element: <RequireAuth><InfoVenta /></RequireAuth> },

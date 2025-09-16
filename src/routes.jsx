@@ -43,6 +43,7 @@ export const router = createBrowserRouter([
 						</ResourceProvider>
 					</RequireAuth>
 			},
+			// comentario
 			{
 				path: "cuentas", element:
 					<RequireAuth>

@@ -15,6 +15,7 @@ import Roles from "./pages/Roles";
 import Cuentas from "./pages/Cuentas";
 import FormProductos from "./pages/FormProductos";
 import Configuracion from "./pages/Configuracion";
+import PermanentDrawerLeft from "./components/PermanentDrawerLeft";
 
 export const router = createBrowserRouter([
 	{
@@ -24,19 +25,25 @@ export const router = createBrowserRouter([
 			{
 				path: "", element:
 					<RequireAuth>
-						<Home />
+						<PermanentDrawerLeft>
+							<Home />
+						</PermanentDrawerLeft>
 					</RequireAuth>
 			},
 			{
 				path: "*", element:
 					<RequireAuth>
-						<Home />
+						<PermanentDrawerLeft>
+							<Home />
+						</PermanentDrawerLeft>
 					</RequireAuth>
 			},
 			{
 				path: "home", element:
 					<RequireAuth>
-						<Home />
+						<PermanentDrawerLeft>
+							<Home />
+						</PermanentDrawerLeft>
 					</RequireAuth>
 			},
 			{
@@ -62,7 +69,9 @@ export const router = createBrowserRouter([
 			{
 				path: "turnos", element:
 					<RequireAuth>
-						<Turnos />
+						<ResourceProvider>
+							<Turnos />
+						</ResourceProvider>
 					</RequireAuth>
 			},
 			{
@@ -110,13 +119,17 @@ export const router = createBrowserRouter([
 			{
 				path: "roles", element:
 					<RequireAuth>
-						<Roles />
+						<ResourceProvider>
+							<Roles />
+						</ResourceProvider>
 					</RequireAuth>
 			},
 			{
 				path: "configuracion", element:
 					<RequireAuth>
-						<Configuracion />
+						<PermanentDrawerLeft>
+							<Configuracion />
+						</PermanentDrawerLeft>
 					</RequireAuth>
 			},
 			{ path: "login", element: <Login /> },

@@ -54,7 +54,6 @@ export default function PermanentDrawerLeft({ children }) {
 	// 	"Panel de control",
 	// 	"Reportes",
 	// 	"Mas herramientas",
-	// 	"Configuracion",
 	// 	"Dashboard",
 	// ];
 

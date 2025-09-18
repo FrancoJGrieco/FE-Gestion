@@ -1,12 +1,15 @@
 import { PaginationProvider } from "../hooks/pagination";
 import { SearchProvider } from "../hooks/search";
+import PermanentDrawerLeft from "./PermanentDrawerLeft";
 
 export function ResourceProvider({ children }) {
   return (
-    <PaginationProvider>
-      <SearchProvider>
-        {children}
-      </SearchProvider>
-    </PaginationProvider>
+    <PermanentDrawerLeft>
+      <PaginationProvider>
+        <SearchProvider>
+          {children}
+        </SearchProvider>
+      </PaginationProvider>
+    </PermanentDrawerLeft>
   );
 }

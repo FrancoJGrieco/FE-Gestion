@@ -11,8 +11,13 @@ export default function Home() {
 	const [ventas, setVentas] = useState([])
 	const [empleados, setEmpleados] = useState([])
 	const [ventasEmpleado, setVentasEmpleado] = useState([])
-	const [ventasFecha, setVentasFecha] = useState([])
-	const [empleadoSeleccionado, setEmpleadoSeleccionado] = useState('')
+	// const [ventasFecha, setVentasFecha] = useState([
+	// 	{
+	// 		startDate: '',
+	// 		endDate: '',
+	// 	}
+	// ])
+	const [empleadoSeleccionado, setEmpleadoSeleccionado] = useState(1)
 
 	const fetchVentas = async () => {
 		const { data } = await axios.get(import.meta.env.VITE_API_URL + type)
@@ -67,6 +72,7 @@ export default function Home() {
 				}}
 			>
 				<DateRangePicker />
+				{/*fechas={(fechas) => { setVentasFecha(fechas) }}*/}
 				<LineChart width={600} height={300} data={ventasEmpleado}>
 					<CartesianGrid />
 					<Line dataKey="total" />

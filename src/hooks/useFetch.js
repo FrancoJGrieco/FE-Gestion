@@ -9,14 +9,14 @@ export default function useFetch(type) {
   const { busqueda } = useContext(SearchContext)
 
   const getElementos = async () => {
-    const datos = await axios.get(import.meta.env.VITE_API_URL + type + '/' + cantidad + "/" + pagina + "/" + busqueda)
+    const datos = await axios.get(import.meta.env.VITE_API_URL + type + '/' + cantidad + "/" + pagina + "/" + busqueda, { withCredentials: true })
     setElementos(datos.data[type])
     setMaxPaginas(datos.data.count / cantidad)
   }
 
   useEffect(() => {
     getElementos()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pagina, cantidad, busqueda])
 
   return { elementos }

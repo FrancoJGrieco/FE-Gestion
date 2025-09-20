@@ -17,7 +17,7 @@ export default function ProductoCard({ producto }) {
 			<Box
 				component={Link}
 				to={`/productos/update/${producto.id}`}
-				state={{ producto: producto }}
+				state={{ id: producto.id }}
 				sx={{ textDecoration: 'none' }}
 			>
 				<Typography variant="h6">{producto.name} - {producto.codigo}</Typography>

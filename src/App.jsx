@@ -4,7 +4,7 @@ import { AuthProvider } from "./hooks/auth";
 function App() {
 	return (
 		<AuthProvider>
-					<Outlet />
+			<Outlet />
 		</AuthProvider>
 	);
 }

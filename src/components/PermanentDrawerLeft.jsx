@@ -9,7 +9,6 @@ import {
 	ListItemIcon,
 	ListItemText,
 	Toolbar,
-	Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import DrawerImage from "./DrawerImage";
@@ -62,12 +61,16 @@ export default function PermanentDrawerLeft({ children }) {
 			<CssBaseline />
 			<AppBar
 				position="fixed"
-				sx={{ width: 100%{/*`calc(100% - ${drawerWidth}px)`*/}, ml: `${drawerWidth}px`, zIndex:10000}}
-			>
-				<Toolbar sx={{ width: `${drawerWidth}px`}}>
-					<Typography variant="h6" noWrap component={Link} to="/home" sx={{ margin: 'auto', textDecorationLine:'none'}}>
-						<img src="./Logo.png" alt="logo_tuStore" style={{width: 100}}/>
-					</Typography>
+				sx={{
+					width: 100 % {/*`calc(100% - ${drawerWidth}px)`*/ },
+					ml: `${drawerWidth}px`,
+					zIndex: 10000,
+				}}
+			> 
+				<Toolbar sx={{ width: `${drawerWidth}px` }}>
+					<Box component={Link} to="/home" sx={{ margin: 'auto' }} >
+						<img src="./Logo.png" alt="logo_tuStore" style={{ width: 100 }} />
+					</Box>
 				</Toolbar>
 			</AppBar>
 			<Drawer
@@ -86,12 +89,12 @@ export default function PermanentDrawerLeft({ children }) {
 				<List>
 					{optionList.map((objeto) => (
 						<ListItem key={objeto.link} disablePadding>
-								<ListItemButton component={Link} 	to={`/${objeto.link}`}>
-									<ListItemIcon>
-										<DrawerImage name={objeto.name} />
-									</ListItemIcon>
-									<ListItemText primary={objeto.name} />
-								</ListItemButton>
+							<ListItemButton component={Link} to={`/${objeto.link}`}>
+								<ListItemIcon>
+									<DrawerImage name={objeto.name} />
+								</ListItemIcon>
+								<ListItemText primary={objeto.name} />
+							</ListItemButton>
 						</ListItem>
 					))}
 				</List>

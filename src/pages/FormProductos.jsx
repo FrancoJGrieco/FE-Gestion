@@ -1,5 +1,5 @@
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import useGetProducto from "../hooks/useInitializeProducto";
 import updateDatum from "../services/updateDatum";
@@ -9,7 +9,7 @@ import CreateData from "../services/createData";
 
 export default function FormProductos() {
 	const location = useLocation();
-	const id = location.state?.producto.id;
+	const id = location.state?.id;
 	const { producto } = useGetProducto(id);
 	const navigate = useNavigate()
 	const type = 'productos'
@@ -73,23 +73,41 @@ export default function FormProductos() {
 							onChange={handleFieldChange}
 						/>
 
-						{id ?
+						<Box
+							sx={{
+								display: 'flex',
+								flexDirection: 'row',
+								justifyContent: 'space-between'
+							}}
+						>
+
 							<Button
 								variant="contained"
-								onClick={() => updateProducto()}
+								component={Link}
+								to='/productos'
 								sx={{ maxWidth: "100px" }}
 							>
-								Guardar
+								atras
 							</Button>
-							:
-							<Button
-								variant="contained"
-								onClick={() => crearProducto()}
-								sx={{ maxWidth: '100px' }}
-							>
-								Crear
-							</Button>
-						}
+
+							{id ?
+								<Button
+									variant="contained"
+									onClick={() => updateProducto()}
+									sx={{ maxWidth: "100px" }}
+								>
+									Guardar
+								</Button>
+								:
+								<Button
+									variant="contained"
+									onClick={() => crearProducto()}
+									sx={{ maxWidth: '100px' }}
+								>
+									Crear
+								</Button>
+							}
+						</Box>
 					</Box>
 				</Container>
 			)}

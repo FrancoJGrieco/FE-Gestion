@@ -25,25 +25,31 @@ export const router = createBrowserRouter([
 			{
 				path: "", element:
 					<RequireAuth>
-						<PermanentDrawerLeft>
+						{/* <PermanentDrawerLeft> */}
+						<ResourceProvider>
 							<Home />
-						</PermanentDrawerLeft>
+						</ResourceProvider>
+						{/* </PermanentDrawerLeft> */}
 					</RequireAuth>
 			},
 			{
 				path: "*", element:
 					<RequireAuth>
-						<PermanentDrawerLeft>
+						{/* <PermanentDrawerLeft> */}
+						<ResourceProvider>
 							<Home />
-						</PermanentDrawerLeft>
+						</ResourceProvider>
+						{/* </PermanentDrawerLeft> */}
 					</RequireAuth>
 			},
 			{
 				path: "home", element:
 					<RequireAuth>
-						<PermanentDrawerLeft>
+						{/* <PermanentDrawerLeft> */}
+						<ResourceProvider>
 							<Home />
-						</PermanentDrawerLeft>
+						</ResourceProvider>
+						{/* </PermanentDrawerLeft> */}
 					</RequireAuth>
 			},
 			{
@@ -57,13 +63,17 @@ export const router = createBrowserRouter([
 			{
 				path: "productos/create", element:
 					<RequireAuth>
-						<FormProductos />
+						<PermanentDrawerLeft>
+							<FormProductos />
+						</PermanentDrawerLeft>
 					</RequireAuth>
 			},
 			{
 				path: "productos/update/:id", element:
 					<RequireAuth>
-						<FormProductos />
+						<PermanentDrawerLeft>
+							<FormProductos />
+						</PermanentDrawerLeft>
 					</RequireAuth>
 			},
 			{
@@ -101,13 +111,17 @@ export const router = createBrowserRouter([
 			{
 				path: "ventas/create", element:
 					<RequireAuth>
-						<CreateVentas />
+						<PermanentDrawerLeft>
+							<CreateVentas />
+						</PermanentDrawerLeft>
 					</RequireAuth>
 			},
 			{
 				path: "ventas/info/:id", element:
 					<RequireAuth>
-						<InfoVenta />
+						<PermanentDrawerLeft>
+							<InfoVenta />
+						</PermanentDrawerLeft>
 					</RequireAuth>
 			},
 			{

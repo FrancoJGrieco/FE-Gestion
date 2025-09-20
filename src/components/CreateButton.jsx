@@ -15,6 +15,7 @@ export default function CreateButton({ type }) {
       <Button
         component={Link}
         to={`/${type}/create`}
+        variant="contained"
       >
         Create
       </Button>

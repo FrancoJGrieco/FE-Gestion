@@ -1,13 +1,15 @@
 
 import { Box, Container, MenuItem, Select, TextField, Typography } from "@mui/material";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Legend } from 'recharts';
 import DateRangePicker from "../components/DateRangePicker";
+import { AuthContext } from "../hooks/auth";
 
 export default function Home() {
 	const type = 'ventas'
+	const { user } = useContext(AuthContext)
 	const [ventas, setVentas] = useState([])
 	const [empleados, setEmpleados] = useState([])
 	const [ventasEmpleado, setVentasEmpleado] = useState([])
@@ -17,20 +19,20 @@ export default function Home() {
 	// 		endDate: '',
 	// 	}
 	// ])
-	const [empleadoSeleccionado, setEmpleadoSeleccionado] = useState(1)
+	const [empleadoSeleccionado, setEmpleadoSeleccionado] = useState('')
 
 	const fetchVentas = async () => {
-		const { data } = await axios.get(import.meta.env.VITE_API_URL + type)
+		const { data } = await axios.get(import.meta.env.VITE_API_URL + type, { withCredentials: true })
 		setVentas(data.ventas)
 	}
 
 	const fetchEmpleados = async () => {
-		const { data } = await axios.get(import.meta.env.VITE_API_URL + 'empleados')
+		const { data } = await axios.get(import.meta.env.VITE_API_URL + 'empleados', { withCredentials: true })
 		setEmpleados(data.empleados)
 	}
 
 	const fetchVentasEmpleados = async () => {
-		const { data } = await axios.get(import.meta.env.VITE_API_URL + 'ventas/empleado/' + empleadoSeleccionado)
+		const { data } = await axios.get(import.meta.env.VITE_API_URL + 'ventas/empleado/' + empleadoSeleccionado, { withCredentials: true })
 		setVentasEmpleado(data.ventas)
 	}
 
@@ -41,6 +43,7 @@ export default function Home() {
 	useEffect(() => {
 		fetchVentas()
 		fetchEmpleados()
+		console.log(user.cuenta)
 	}, [])
 
 	useEffect(() => {

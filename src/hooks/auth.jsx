@@ -10,6 +10,7 @@ export function AuthProvider({ children }) {
     user: '',
     password: ''
   })
+  const [user, setUser] = useState(null)
 
   const [createForm, setCreateForm] = useState({
     user: '',
@@ -47,6 +48,8 @@ export function AuthProvider({ children }) {
       await axios.post(import.meta.env.VITE_API_URL + 'login', loginForm, {
         withCredentials: true
       })
+
+      setUser(loginForm.user)
       setLoggedIn(true)
       setLoginForm({ user: '', password: '' })
     } catch (err) {
@@ -66,7 +69,12 @@ export function AuthProvider({ children }) {
 
   const checkAuth = async () => {
     try {
-      await axios.get(import.meta.env.VITE_API_URL + 'check-auth', { withCredentials: true })
+      const { data } = await axios.get(import.meta.env.VITE_API_URL + 'check-auth', { withCredentials: true })
+
+      const { data: usuario } = await axios.get(import.meta.env.VITE_API_URL + 'cuentas/' + data.userId)
+
+
+      setUser({ cuenta: usuario.cuenta })
       setLoggedIn(true)
     } catch (err) {
       setLoggedIn(false)
@@ -82,6 +90,7 @@ export function AuthProvider({ children }) {
       signup,
       login,
       logout,
+      user,
       updateLoginFormField,
       updateCreateFormField,
       checkAuth

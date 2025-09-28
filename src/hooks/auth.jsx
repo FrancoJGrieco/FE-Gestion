@@ -70,10 +70,10 @@ export function AuthProvider({ children }) {
   const checkAuth = async () => {
     try {
       const { data } = await axios.get(import.meta.env.VITE_API_URL + 'check-auth', { withCredentials: true })
-
+      
       const { data: usuario } = await axios.get(import.meta.env.VITE_API_URL + 'cuentas/' + data.userId)
-
-
+      
+      console.log(usuario)
       setUser({ cuenta: usuario.cuenta })
       setLoggedIn(true)
     } catch (err) {

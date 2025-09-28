@@ -1,15 +1,13 @@
 
 import { Box, Container, MenuItem, Select, TextField, Typography } from "@mui/material";
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Legend } from 'recharts';
 import DateRangePicker from "../components/DateRangePicker";
-import { AuthContext } from "../hooks/auth";
 
 export default function Home() {
 	const type = 'ventas'
-	const { user } = useContext(AuthContext)
 	const [ventas, setVentas] = useState([])
 	const [empleados, setEmpleados] = useState([])
 	const [ventasEmpleado, setVentasEmpleado] = useState([])
@@ -43,12 +41,12 @@ export default function Home() {
 	useEffect(() => {
 		fetchVentas()
 		fetchEmpleados()
-		console.log(user.cuenta)
 	}, [])
 
 	useEffect(() => {
 		if (empleadoSeleccionado !== '')
 			fetchVentasEmpleados()
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [empleadoSeleccionado])
 
 	if (!ventas) return <>No hay ventas</>

@@ -7,22 +7,56 @@ export default function ProductoCard({ producto }) {
 	const type = 'productos'
 	return (
 		<Box
-		sx={{
-			backgroundColor: "darkgray",
-			padding: 1,
-			borderRadius: 5,
-			display: 'flex',
-		}}
+			sx={{
+				backgroundColor: "darkgray",
+				borderRadius: 0.5,
+				display: 'flex',
+				flexDirection: 'column',
+				gap: 1
+			}}
 		>
 			<Box
 				component={Link}
 				to={`/productos/update/${producto.id}`}
 				state={{ id: producto.id }}
-				sx={{ textDecoration: 'none' }}
+				sx={{
+					textDecoration: 'none',
+					backgroundColor: 'gray',
+					borderTopLeftRadius: 2,
+					borderTopRightRadius: 2,
+					height: '2rem',
+					display: 'flex',
+					flexDirection: 'row',
+					justifyContent: 'center',
+					alignItems: 'center'
+				}}
 			>
-				<Typography variant="h6">{producto.name} - {producto.codigo}</Typography>
+				<Typography>{producto.name}</Typography>
 			</Box>
-			<IconButton onClick={()=>removeDatum({id: producto.id, type})}><RemoveCircleIcon/></IconButton>
-		</Box>
+			<Box
+				sx={{
+					display: 'flex',
+					flexDirection: 'row',
+					gap: 1,
+					marginBottom: 1
+				}}
+			>
+				<Box
+					sx={{
+						marginLeft: 1
+					}}
+				>
+					<Typography>
+						Codigo: {producto.codigo}
+					</Typography>
+					<Typography>
+						Cantidad: {producto.cant}
+					</Typography>
+				</Box>
+				<Box>
+					<IconButton onClick={() => removeDatum({ id: producto.id, type })}><RemoveCircleIcon /></IconButton>
+				</Box>
+			</Box>
+		</Box >
 	);
 }

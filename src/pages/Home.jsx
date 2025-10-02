@@ -1,22 +1,19 @@
 
 import { Box, Container, MenuItem, Select, TextField, Typography } from "@mui/material";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Legend } from 'recharts';
 import DateRangePicker from "../components/DateRangePicker";
+import { VentasGraficoContext, VentasGraficoProvider } from "../hooks/ventasGrafico";
 
 export default function Home() {
 	const type = 'ventas'
 	const [ventas, setVentas] = useState([])
 	const [empleados, setEmpleados] = useState([])
 	const [ventasEmpleado, setVentasEmpleado] = useState([])
-	// const [ventasFecha, setVentasFecha] = useState([
-	// 	{
-	// 		startDate: '',
-	// 		endDate: '',
-	// 	}
-	// ])
+	const { ventasGrafico } = useContext(VentasGraficoContext)
+
 	const [empleadoSeleccionado, setEmpleadoSeleccionado] = useState('')
 
 	const fetchVentas = async () => {
@@ -46,7 +43,7 @@ export default function Home() {
 	useEffect(() => {
 		if (empleadoSeleccionado !== '')
 			fetchVentasEmpleados()
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [empleadoSeleccionado])
 
 	if (!ventas) return <>No hay ventas</>
@@ -61,6 +58,7 @@ export default function Home() {
 			}}
 		>
 			<Typography variant="h3" sx={{ margin: 'auto' }}>Home</Typography>
+			{/* grafico con fecha */}
 			<Box
 				sx={{
 					display: 'flex',
@@ -72,16 +70,17 @@ export default function Home() {
 					borderColor: 'black'
 				}}
 			>
-				<DateRangePicker />
-				{/*fechas={(fechas) => { setVentasFecha(fechas) }}*/}
-				<LineChart width={600} height={300} data={ventasEmpleado}>
-					<CartesianGrid />
-					<Line dataKey="total" />
-					<XAxis dataKey='numero_ticket' />
-					<YAxis />
-					<Legend />
-				</LineChart>
+					<DateRangePicker />
+					{console.log(ventasGrafico)}
+					<LineChart width={600} height={300} data={ventasGrafico}>
+						<CartesianGrid />
+						<Line dataKey="total" />
+						<XAxis dataKey='numero_ticket' />
+						<YAxis />
+						<Legend />
+					</LineChart>
 			</Box>
+			{/* Grafico empleados */}
 			<Box
 				sx={{
 					display: 'flex',

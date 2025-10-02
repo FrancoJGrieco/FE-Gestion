@@ -1,18 +1,14 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
+import { Button } from "@mui/material";
 
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import { VentasGraficoContext } from "../hooks/ventasGrafico";
 
 export default function DateRangeWithInput() {
-  const [range, setRange] = useState([
-    {
-      startDate: new Date(2025, 8, 12),
-      endDate: new Date(2025, 9, 15),
-      key: "selection"
-    }
-  ]);
+  const { range, setItemRange, fetchVentasGrafico } = useContext(VentasGraficoContext)
 
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
@@ -36,7 +32,7 @@ export default function DateRangeWithInput() {
           range[0].endDate,
           "MM/dd/yyyy"
         )}`}
-        onClick={() => setOpen(!open)}
+        onClick={() => { setOpen(!open) }}
         style={{
           padding: "10px",
           borderRadius: "6px",
@@ -47,19 +43,20 @@ export default function DateRangeWithInput() {
       />
 
       {open && (
-        <div style={{ position: "absolute", zIndex: 1000000, top: "110%", left: "0" }}>
+        <div style={{ position: "absolute", zIndex: 100, top: "110%", left: "0" }}>
           <DateRange
             editableDateInputs={true}
-            onChange={(item) => setRange([item.selection])}
+            onChange={(item) => setItemRange(item)}
             moveRangeOnFirstSelection={false}
             ranges={range}
             months={2}
             direction="horizontal"
-            minDate={new Date(2025, 8, 12)}
-            maxDate={new Date(2025, 9, 15)}
+            minDate={new Date(2024, 5, 12)}
+            maxDate={new Date(2025, 11, 31)}
           />
         </div>
       )}
+      <Button onClick={fetchVentasGrafico}>Buscar</Button>
     </div>
   );
 }

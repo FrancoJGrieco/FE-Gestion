@@ -16,6 +16,7 @@ import Cuentas from "./pages/Cuentas";
 import FormProductos from "./pages/FormProductos";
 import Configuracion from "./pages/Configuracion";
 import PermanentDrawerLeft from "./components/PermanentDrawerLeft";
+import { VentasGraficoProvider } from "./hooks/ventasGrafico";
 
 export const router = createBrowserRouter([
 	{
@@ -26,9 +27,12 @@ export const router = createBrowserRouter([
 				path: "", element:
 					<RequireAuth>
 						{/* <PermanentDrawerLeft> */}
-						<ResourceProvider>
-							<Home />
-						</ResourceProvider>
+						<VentasGraficoProvider>
+							<ResourceProvider>
+								<Home />
+							</ResourceProvider>
+						</VentasGraficoProvider>
+
 						{/* </PermanentDrawerLeft> */}
 					</RequireAuth>
 			},
@@ -36,9 +40,11 @@ export const router = createBrowserRouter([
 				path: "*", element:
 					<RequireAuth>
 						{/* <PermanentDrawerLeft> */}
-						<ResourceProvider>
-							<Home />
-						</ResourceProvider>
+						<VentasGraficoProvider>
+							<ResourceProvider>
+								<Home />
+							</ResourceProvider>
+						</VentasGraficoProvider>
 						{/* </PermanentDrawerLeft> */}
 					</RequireAuth>
 			},
@@ -46,9 +52,11 @@ export const router = createBrowserRouter([
 				path: "home", element:
 					<RequireAuth>
 						{/* <PermanentDrawerLeft> */}
-						<ResourceProvider>
-							<Home />
-						</ResourceProvider>
+						<VentasGraficoProvider>
+							<ResourceProvider>
+								<Home />
+							</ResourceProvider>
+						</VentasGraficoProvider>
 						{/* </PermanentDrawerLeft> */}
 					</RequireAuth>
 			},

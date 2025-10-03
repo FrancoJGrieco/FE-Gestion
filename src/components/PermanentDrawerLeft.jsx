@@ -61,7 +61,7 @@ export default function PermanentDrawerLeft({ children }) {
 	// ];
 
 	return (
-		<Box sx={{ display: "flex" }}>
+		<Box sx={{ display: "flex"}}>
 			<CssBaseline />
 			<AppBar
 				position="fixed"
@@ -90,7 +90,7 @@ export default function PermanentDrawerLeft({ children }) {
 				anchor="left"
 			>
 				<Toolbar />
-				<List>
+				<List sx={{backgroundColor: '#E9F3FB', height: '100vh'}}>
 					<ListItem key={optionList[0].link} disablePadding>
 						<ListItemButton component={Link} to={`/${optionList[0].link}`}>
 							<ListItemIcon>
@@ -123,7 +123,7 @@ export default function PermanentDrawerLeft({ children }) {
 			</Drawer>
 			<Box
 				component="main"
-				sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
+				sx={{ flexGrow: 1, bgcolor: "#E9F3FB", p: 3, height: '100vh' }}
 			>
 				<Toolbar />
 				{children}

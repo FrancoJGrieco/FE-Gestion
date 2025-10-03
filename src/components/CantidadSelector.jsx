@@ -5,7 +5,7 @@ import { PaginationContext } from "../hooks/pagination";
 export default function CantidadSelector() {
   const { cantidad, cambiarCantidad } = useContext(PaginationContext)
   return (
-    <Container
+    <Box
       sx={{
         display: 'flex',
         flexDirection: 'row',
@@ -18,16 +18,17 @@ export default function CantidadSelector() {
         marginBottom: 'auto',
       }}
       >
-        <Typography>Cantidad</Typography>
+        <Typography sx={{fontSize: '1.2rem'}}>Cantidad</Typography>
       </Box>
       <Select
         value={cantidad}
         onChange={cambiarCantidad}
+        size="small"
       >
         <MenuItem value={10}>10</MenuItem>
         <MenuItem value={25}>25</MenuItem>
         <MenuItem value={50}>50</MenuItem>
       </Select>
-    </Container>
+    </Box>
   )
 }

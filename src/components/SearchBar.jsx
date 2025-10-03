@@ -11,7 +11,8 @@ export default function SearchBar() {
         heigth: 'fit-content',
         display: 'flex',
         flexDirection: 'row',
-        gap: 2
+        gap: 2,
+        margin: 0
       }}
     >
       <TextField
@@ -22,6 +23,7 @@ export default function SearchBar() {
         sx={{
           width: 250,
         }}
+        size="small"
       ></TextField>
       <Button onClick={buscarElemento}>Buscar</Button>
     </Container>

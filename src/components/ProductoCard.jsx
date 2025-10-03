@@ -16,7 +16,11 @@ export default function ProductoCard({ producto }) {
 				state={{ id: producto.id }}
 				sx={styles.bxCardElement}
 			>
-				<Typography>{producto.name}</Typography>
+				<Typography sx={styles.bxCardTitle}>
+					{producto.name.substring(0, 13)}
+					{producto.name[13] !== ' ' ? producto.name[13] : ''}
+					{(producto.name.length > 14) ? '...' : false}
+				</Typography>
 			</Box>
 			<Box
 				sx={styles.bxCardDes}
@@ -24,10 +28,10 @@ export default function ProductoCard({ producto }) {
 				<Box
 					sx={styles.bxCardInfo}
 				>
-					<Typography>
+					<Typography sx={styles.bxCardText}>
 						Codigo: {producto.codigo}
 					</Typography>
-					<Typography>
+					<Typography sx={styles.bxCardText}>
 						Cantidad: {producto.cant}
 					</Typography>
 				</Box>

@@ -17,6 +17,7 @@ import FormProductos from "./pages/FormProductos";
 import Configuracion from "./pages/Configuracion";
 import PermanentDrawerLeft from "./components/PermanentDrawerLeft";
 import { VentasGraficoProvider } from "./hooks/ventasGrafico";
+import FormEmpleados from "./pages/FormEmpleados";
 
 export const router = createBrowserRouter([
 	{
@@ -98,6 +99,22 @@ export const router = createBrowserRouter([
 						<ResourceProvider>
 							<Empleados />
 						</ResourceProvider>
+					</RequireAuth>
+			},
+			{
+				path: "empleados/create", element:
+					<RequireAuth>
+						<PermanentDrawerLeft>
+							<FormEmpleados />
+						</PermanentDrawerLeft>
+					</RequireAuth>
+			},
+			{
+				path: "empleados/update/:id", element:
+					<RequireAuth>
+						<PermanentDrawerLeft>
+							<FormEmpleados />
+						</PermanentDrawerLeft>
 					</RequireAuth>
 			},
 			{

@@ -69,9 +69,12 @@ export default function PermanentDrawerLeft({ children }) {
 					width: 100 % {/*`calc(100% - ${drawerWidth}px)`*/ },
 					ml: `${drawerWidth}px`,
 					zIndex: 10000,
+					backgroundColor: '#4a4f52ff'
 				}}
 			>
-				<Toolbar sx={{ width: `${drawerWidth}px` }}>
+				<Toolbar sx={{ 
+					width: `${drawerWidth}px`,
+					}}>
 					<Box component={Link} to="/home" sx={{ margin: 'auto' }} >
 						<img src="./Logo.png" alt="logo_tuStore" style={{ width: 100 }} />
 					</Box>
@@ -90,13 +93,14 @@ export default function PermanentDrawerLeft({ children }) {
 				anchor="left"
 			>
 				<Toolbar />
-				<List sx={{backgroundColor: '#E9F3FB', height: '100vh'}}>
+				{/* '#E9F3FB' */}
+				<List sx={{backgroundColor: '#5c6165ff', height: '100vh'}}>
 					<ListItem key={optionList[0].link} disablePadding>
 						<ListItemButton component={Link} to={`/${optionList[0].link}`}>
 							<ListItemIcon>
 								<DrawerImage name={optionList[0].name} />
 							</ListItemIcon>
-							<ListItemText primary={optionList[0].name} />
+							<ListItemText primary={optionList[0].name} style={{color: 'white'}}/>
 						</ListItemButton>
 					</ListItem>
 					{optionList.map((objeto) => {
@@ -109,7 +113,7 @@ export default function PermanentDrawerLeft({ children }) {
 												<ListItemIcon>
 													<DrawerImage name={objeto.name} />
 												</ListItemIcon>
-												<ListItemText primary={objeto.name} />
+												<ListItemText primary={objeto.name} style={{color: 'white'}} />
 											</ListItemButton>
 										</ListItem>
 										:
@@ -121,9 +125,10 @@ export default function PermanentDrawerLeft({ children }) {
 					)}
 				</List>
 			</Drawer>
+			{/* "#E9F3FB" */}
 			<Box
 				component="main"
-				sx={{ flexGrow: 1, bgcolor: "#E9F3FB", p: 3, height: '100vh' }}
+				sx={{ flexGrow: 1, bgcolor: "#E9F3FB", p: 3, height: '100%', minHeight: '100vh' }}
 			>
 				<Toolbar />
 				{children}

@@ -32,7 +32,7 @@ export const styles = {
     marginLeft: 1,
   },
   bxCardTitle:{
-    fontSize: '1.3rem'
+    fontSize: '1.3rem',
   },
   bxCardText:{
     fontSize: '1rem'

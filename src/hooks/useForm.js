@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { forms } from "../services/forms";
 
-export default function useForm({ element = null } = {}) {
-	const [form, setForm] = useState({	name: '', codigo: '', price: 0.0, cant: 0});
+export default function useForm({ element = null } = {}, type) {
+	const [form, setForm] = useState(forms[type]);
 
 	useEffect(()=>{
 		if(element){

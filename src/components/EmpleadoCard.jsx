@@ -17,7 +17,7 @@ export default function EmpleadoCard({ empleado }) {
 			<Box
 				component={Link}
 				to={`/empleados/update/${empleado.id}`}
-				state={{ empleado: empleado }}
+				state={{ id: empleado.id }}
 				sx={{ textDecoration: 'none' }}
 			>
 				<Typography variant="h6">{empleado.fname} - {empleado.cuit}</Typography>

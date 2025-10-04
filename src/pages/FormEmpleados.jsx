@@ -1,44 +1,44 @@
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import useForm from "../hooks/useForm";
-import useInitializeElemento from "../hooks/useInitializeElemento";
 import updateDatum from "../services/updateDatum";
 import { useNavigate } from "react-router-dom";
 import CreateData from "../services/createData";
+import useInitializeElemento from "../hooks/useInitializeElemento";
 
 
-export default function FormProductos() {
+export default function FormEmpleados() {
 	const location = useLocation();
 	const id = location.state?.id;
-	const { elemento: producto } = useInitializeElemento(id, 'productos', 'producto');
+	const { elemento: empleado } = useInitializeElemento(id, 'empleados', 'empleado');
+	console.log(empleado)
 	const navigate = useNavigate()
-	const type = 'productos'
-	const { form, handleFieldChange } = useForm({ element: producto }, 'productos');
+	const type = 'empleados'
+	const { form, handleFieldChange } = useForm({ element: empleado });
 
-	const crearProducto = async () => {
+	const crearEmpleado = async () => {
 		try {
-			if (form.price === 0.0) {
-				throw new Error("El precio no puede ser 0")
+			if (form.fname === '') {
+				throw new Error("Se requiere nombre del empleado")
 			}
 
 			await CreateData({ form, type })
 
-			navigate('/productos')
+			navigate('/empleados')
 		} catch (err) {
 			console.log(err)
 		}
 	}
 
-	const updateProducto = async () => {
+	const updateEmpleado = async () => {
 		updateDatum(form, type)
-		navigate('/productos')
+		navigate('/empleados')
 	}
 
 	return (
 		<>
 			{form && (
 				<Container>
-					{console.log(form)}
 					<Box
 						sx={{
 							maxWidth: "400px",
@@ -49,28 +49,40 @@ export default function FormProductos() {
 						}}
 					>
 						<TextField
-							value={form?.name ?? ''}
-							name="name"
-							label="Name"
+							value={form?.fname ?? ''}
+							name="fname"
+							label="Fname"
 							onChange={handleFieldChange}
 						/>
 						<TextField
-							name='codigo'
-							label='Codigo'
-							value={form?.codigo ?? ''}
+							value={form?.lname ?? ''}
+							name='lname'
+							label='Lname'
 							onChange={handleFieldChange}
 						></TextField>
 
 						<TextField
-							value={form?.price ?? ''}
-							name="price"
-							label="Price"
+							value={form?.cuit ?? ''}
+							name="cuit"
+							label="Cuit"
 							onChange={handleFieldChange}
 						/>
 						<TextField
-							value={form?.cant ?? ''}
-							name="cant"
-							label="Quantity"
+							value={form?.dni ?? ''}
+							name="dni"
+							label="DNI"
+							onChange={handleFieldChange}
+						/>
+						<TextField
+							value={form?.mail ?? ''}
+							name="mail"
+							label="Mail"
+							onChange={handleFieldChange}
+						/>
+						<TextField
+							value={form?.nacimiento ?? ''}
+							name="nacimiento"
+							label="Nacimiento"
 							onChange={handleFieldChange}
 						/>
 
@@ -85,7 +97,7 @@ export default function FormProductos() {
 							<Button
 								variant="contained"
 								component={Link}
-								to='/productos'
+								to='/empleados'
 								sx={{ maxWidth: "100px" }}
 							>
 								atras
@@ -94,7 +106,7 @@ export default function FormProductos() {
 							{id ?
 								<Button
 									variant="contained"
-									onClick={() => updateProducto()}
+									onClick={() => updateEmpleado()}
 									sx={{ maxWidth: "100px" }}
 								>
 									Guardar
@@ -102,7 +114,7 @@ export default function FormProductos() {
 								:
 								<Button
 									variant="contained"
-									onClick={() => crearProducto()}
+									onClick={() => crearEmpleado()}
 									sx={{ maxWidth: '100px' }}
 								>
 									Crear

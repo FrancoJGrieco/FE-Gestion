@@ -1,39 +1,12 @@
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
-import useForm from "../hooks/useForm";
-import updateDatum from "../services/updateDatum";
-import { useNavigate } from "react-router-dom";
-import CreateData from "../services/createData";
-import useInitializeElemento from "../hooks/useInitializeElemento";
+import { Link } from "react-router-dom";
+import useFormFunctions from "../hooks/useFormFunctions";
 
 
 export default function FormEmpleados() {
-	const location = useLocation();
-	const id = location.state?.id;
-	const { elemento: empleado } = useInitializeElemento(id, 'empleados', 'empleado');
-	console.log(empleado)
-	const navigate = useNavigate()
 	const type = 'empleados'
-	const { form, handleFieldChange } = useForm({ element: empleado });
-
-	const crearEmpleado = async () => {
-		try {
-			if (form.fname === '') {
-				throw new Error("Se requiere nombre del empleado")
-			}
-
-			await CreateData({ form, type })
-
-			navigate('/empleados')
-		} catch (err) {
-			console.log(err)
-		}
-	}
-
-	const updateEmpleado = async () => {
-		updateDatum(form, type)
-		navigate('/empleados')
-	}
+	const typeElemento = 'empleado'
+	const { handleFieldChange, handleSubmit, form, id } = useFormFunctions({ type, typeElemento })
 
 	return (
 		<>
@@ -106,7 +79,7 @@ export default function FormEmpleados() {
 							{id ?
 								<Button
 									variant="contained"
-									onClick={() => updateEmpleado()}
+									onClick={() => handleSubmit()}
 									sx={{ maxWidth: "100px" }}
 								>
 									Guardar
@@ -114,7 +87,7 @@ export default function FormEmpleados() {
 								:
 								<Button
 									variant="contained"
-									onClick={() => crearEmpleado()}
+									onClick={() => handleSubmit()}
 									sx={{ maxWidth: '100px' }}
 								>
 									Crear

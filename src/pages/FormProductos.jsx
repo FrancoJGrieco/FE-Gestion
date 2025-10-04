@@ -1,39 +1,13 @@
-import { Box, Button, Container, TextField, Typography } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
-import useForm from "../hooks/useForm";
-import useInitializeElemento from "../hooks/useInitializeElemento";
-import updateDatum from "../services/updateDatum";
-import { useNavigate } from "react-router-dom";
-import CreateData from "../services/createData";
+import { Box, Button, Container, TextField } from "@mui/material";
+import { Link} from "react-router-dom";
+import useFormFunctions from "../hooks/useFormFunctions";
 
 
 export default function FormProductos() {
-	const location = useLocation();
-	const id = location.state?.id;
-	const { elemento: producto } = useInitializeElemento(id, 'productos', 'producto');
-	const navigate = useNavigate()
 	const type = 'productos'
-	const { form, handleFieldChange } = useForm({ element: producto }, 'productos');
-
-	const crearProducto = async () => {
-		try {
-			if (form.price === 0.0) {
-				throw new Error("El precio no puede ser 0")
-			}
-
-			await CreateData({ form, type })
-
-			navigate('/productos')
-		} catch (err) {
-			console.log(err)
-		}
-	}
-
-	const updateProducto = async () => {
-		updateDatum(form, type)
-		navigate('/productos')
-	}
-
+	const typeElemento = 'producto'
+	const { handleFieldChange, handleSubmit, form, id } = useFormFunctions({ type, typeElemento })
+	
 	return (
 		<>
 			{form && (
@@ -94,7 +68,7 @@ export default function FormProductos() {
 							{id ?
 								<Button
 									variant="contained"
-									onClick={() => updateProducto()}
+									onClick={() => handleSubmit()}
 									sx={{ maxWidth: "100px" }}
 								>
 									Guardar
@@ -102,7 +76,7 @@ export default function FormProductos() {
 								:
 								<Button
 									variant="contained"
-									onClick={() => crearProducto()}
+									onClick={() => handleSubmit()}
 									sx={{ maxWidth: '100px' }}
 								>
 									Crear

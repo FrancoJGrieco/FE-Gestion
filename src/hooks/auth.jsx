@@ -73,7 +73,6 @@ export function AuthProvider({ children }) {
       
       const { data: usuario } = await axios.get(import.meta.env.VITE_API_URL + 'cuentas/' + data.userId)
       
-      console.log(usuario)
       setUser({ cuenta: usuario.cuenta })
       setLoggedIn(true)
     } catch (err) {

@@ -70,7 +70,7 @@ export default function FormEmpleados() {
 							<Button
 								variant="contained"
 								component={Link}
-								to='/empleados'
+								to={`/${type}`}
 								sx={{ maxWidth: "100px" }}
 							>
 								atras

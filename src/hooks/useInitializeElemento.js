@@ -11,6 +11,7 @@ export default function useInitializeElemento(id, type, elementType) {
 				const data = await fetchDatum({id, type, elementType});
 				setElemento(data);
 			} else {
+				console.log('hola')
 				setElemento(forms[type]);
 			}
 		})();

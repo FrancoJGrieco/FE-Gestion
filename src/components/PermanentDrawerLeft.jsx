@@ -16,6 +16,7 @@ import { useContext } from "react";
 import { AuthContext } from "../hooks/auth";
 
 export default function PermanentDrawerLeft({ children }) {
+	const { loggedIn, logout } = useContext(AuthContext)
 	const drawerWidth = 240;
 	const optionList = [
 		{
@@ -50,6 +51,10 @@ export default function PermanentDrawerLeft({ children }) {
 			name: 'Configuracion',
 			link: 'configuracion'
 		},
+		{
+			name: 'Cerrar Sesion',
+			link: 'cerrarSesion'
+		},
 	]
 
 	const { user } = useContext(AuthContext)
@@ -60,8 +65,10 @@ export default function PermanentDrawerLeft({ children }) {
 	// 	"Dashboard",
 	// ];
 
+	if (!loggedIn) return <>{children}</>
+
 	return (
-		<Box sx={{ display: "flex"}}>
+		<Box sx={{ display: "flex" }}>
 			<CssBaseline />
 			<AppBar
 				position="fixed"
@@ -72,11 +79,11 @@ export default function PermanentDrawerLeft({ children }) {
 					backgroundColor: '#4a4f52ff'
 				}}
 			>
-				<Toolbar sx={{ 
+				<Toolbar sx={{
 					width: `${drawerWidth}px`,
-					}}>
+				}}>
 					<Box component={Link} to="/home" sx={{ margin: 'auto' }} >
-						<img src="./Logo.png" alt="logo_tuStore" style={{ width: 100 }} />
+						<img src="/Logo.png" alt="logo_tuStore" style={{ width: 100 }} />
 					</Box>
 				</Toolbar>
 			</AppBar>
@@ -94,35 +101,42 @@ export default function PermanentDrawerLeft({ children }) {
 			>
 				<Toolbar />
 				{/* '#E9F3FB' */}
-				<List sx={{backgroundColor: '#5c6165ff', height: '100vh'}}>
+				<List sx={{ backgroundColor: '#5c6165ff', height: '100vh' }}>
 					<ListItem key={optionList[0].link} disablePadding>
 						<ListItemButton component={Link} to={`/${optionList[0].link}`}>
 							<ListItemIcon>
 								<DrawerImage name={optionList[0].name} />
 							</ListItemIcon>
-							<ListItemText primary={optionList[0].name} style={{color: 'white'}}/>
+							<ListItemText primary={optionList[0].name} style={{ color: 'white' }} />
 						</ListItemButton>
 					</ListItem>
+
 					{optionList.map((objeto) => {
+						const tienePermiso = user.cuenta?.Rol?.Seccions?.some(
+							(seccion) => seccion.nombre === objeto.name.toLowerCase()
+						);
+
+						if (!tienePermiso) return null;
+
 						return (
-							<>
-								{
-									user.cuenta?.Rol?.Seccions?.find((seccion) => seccion.nombre === objeto.name.toLowerCase())?.nombre === objeto.name.toLowerCase() ?
-										<ListItem key={objeto.link} disablePadding>
-											<ListItemButton component={Link} to={`/${objeto.link}`}>
-												<ListItemIcon>
-													<DrawerImage name={objeto.name} />
-												</ListItemIcon>
-												<ListItemText primary={objeto.name} style={{color: 'white'}} />
-											</ListItemButton>
-										</ListItem>
-										:
-										<></>
-								}
-							</>
-						)
-					}
-					)}
+							<ListItem key={objeto.link} disablePadding>
+								<ListItemButton component={Link} to={`/${objeto.link}`}>
+									<ListItemIcon>
+										<DrawerImage name={objeto.name} />
+									</ListItemIcon>
+									<ListItemText primary={objeto.name} style={{ color: 'white' }} />
+								</ListItemButton>
+							</ListItem>
+						);
+					})}
+					<ListItem key={optionList[optionList.length - 1].link} disablePadding>
+						<ListItemButton onClick={logout}>
+							<ListItemIcon>
+								<DrawerImage name={optionList[optionList.length - 1].name} />
+							</ListItemIcon>
+							<ListItemText primary={optionList[optionList.length - 1].name} style={{ color: 'white' }} />
+						</ListItemButton>
+					</ListItem>
 				</List>
 			</Drawer>
 			{/* "#E9F3FB" */}

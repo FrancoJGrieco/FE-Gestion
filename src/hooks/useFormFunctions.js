@@ -1,21 +1,21 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import useInitializeElemento from "./useInitializeElemento";
-import useForm from "./useForm";
 import createData from "../services/createData";
 import updateDatum from "../services/updateDatum";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { forms } from "../services/forms";
 
 export default function useFormFunctions({ type, typeElemento }) {
+  const [form, setForm] = useState(forms[type]);
+  const navigate = useNavigate()
   const location = useLocation();
   const id = location.state?.id;
+  console.log('location',location)
   const { elemento } = useInitializeElemento(id, type, typeElemento);
-  const navigate = useNavigate()
-  const { form, setForm, handleFieldChange } = useForm();
-  console.log(form)
+  console.log('hola', elemento)
 
   useEffect(() => {
-    setForm(elemento)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setForm(elemento)  
   }, [elemento])
 
   const handleSubmit = async () => {
@@ -28,7 +28,14 @@ export default function useFormFunctions({ type, typeElemento }) {
     }
   }
 
+  const handleFieldChange = (e) => {
+    const { name, value } = e.target;
 
+    setForm((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
   return { id, handleFieldChange, handleSubmit, form }
 }

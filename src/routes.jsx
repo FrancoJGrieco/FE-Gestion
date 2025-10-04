@@ -14,10 +14,10 @@ import InfoVenta from "./pages/InfoVenta";
 import Roles from "./pages/Roles";
 import Cuentas from "./pages/Cuentas";
 import FormProductos from "./pages/FormProductos";
-import Configuracion from "./pages/Configuracion";
-import PermanentDrawerLeft from "./components/PermanentDrawerLeft";
-import { VentasGraficoProvider } from "./hooks/ventasGrafico";
 import FormEmpleados from "./pages/FormEmpleados";
+import FormCuentas from "./pages/FormCuentas";
+import Configuracion from "./pages/Configuracion";
+import { VentasGraficoProvider } from "./hooks/ventasGrafico";
 
 export const router = createBrowserRouter([
 	{
@@ -27,38 +27,31 @@ export const router = createBrowserRouter([
 			{
 				path: "", element:
 					<RequireAuth>
-						{/* <PermanentDrawerLeft> */}
 						<VentasGraficoProvider>
 							<ResourceProvider>
 								<Home />
 							</ResourceProvider>
 						</VentasGraficoProvider>
-
-						{/* </PermanentDrawerLeft> */}
 					</RequireAuth>
 			},
 			{
 				path: "*", element:
 					<RequireAuth>
-						{/* <PermanentDrawerLeft> */}
 						<VentasGraficoProvider>
 							<ResourceProvider>
 								<Home />
 							</ResourceProvider>
 						</VentasGraficoProvider>
-						{/* </PermanentDrawerLeft> */}
 					</RequireAuth>
 			},
 			{
 				path: "home", element:
 					<RequireAuth>
-						{/* <PermanentDrawerLeft> */}
 						<VentasGraficoProvider>
 							<ResourceProvider>
 								<Home />
 							</ResourceProvider>
 						</VentasGraficoProvider>
-						{/* </PermanentDrawerLeft> */}
 					</RequireAuth>
 			},
 			{
@@ -72,17 +65,13 @@ export const router = createBrowserRouter([
 			{
 				path: "productos/create", element:
 					<RequireAuth>
-						<PermanentDrawerLeft>
-							<FormProductos />
-						</PermanentDrawerLeft>
+						<FormProductos />
 					</RequireAuth>
 			},
 			{
 				path: "productos/update/:id", element:
 					<RequireAuth>
-						<PermanentDrawerLeft>
-							<FormProductos />
-						</PermanentDrawerLeft>
+						<FormProductos />
 					</RequireAuth>
 			},
 			{
@@ -104,17 +93,13 @@ export const router = createBrowserRouter([
 			{
 				path: "empleados/create", element:
 					<RequireAuth>
-						<PermanentDrawerLeft>
-							<FormEmpleados />
-						</PermanentDrawerLeft>
+						<FormEmpleados />
 					</RequireAuth>
 			},
 			{
 				path: "empleados/update/:id", element:
 					<RequireAuth>
-						<PermanentDrawerLeft>
-							<FormEmpleados />
-						</PermanentDrawerLeft>
+						<FormEmpleados />
 					</RequireAuth>
 			},
 			{
@@ -123,6 +108,18 @@ export const router = createBrowserRouter([
 						<ResourceProvider>
 							<Cuentas />
 						</ResourceProvider>
+					</RequireAuth>
+			},
+			{
+				path: "cuentas/create", element:
+					<RequireAuth>
+						<FormCuentas />
+					</RequireAuth>
+			},
+			{
+				path: "cuentas/update/:id", element:
+					<RequireAuth>
+						<FormCuentas />
 					</RequireAuth>
 			},
 			{
@@ -136,17 +133,13 @@ export const router = createBrowserRouter([
 			{
 				path: "ventas/create", element:
 					<RequireAuth>
-						<PermanentDrawerLeft>
-							<CreateVentas />
-						</PermanentDrawerLeft>
+						<CreateVentas />
 					</RequireAuth>
 			},
 			{
 				path: "ventas/info/:id", element:
 					<RequireAuth>
-						<PermanentDrawerLeft>
-							<InfoVenta />
-						</PermanentDrawerLeft>
+						<InfoVenta />
 					</RequireAuth>
 			},
 			{
@@ -166,9 +159,7 @@ export const router = createBrowserRouter([
 			{
 				path: "configuracion", element:
 					<RequireAuth>
-						<PermanentDrawerLeft>
-							<Configuracion />
-						</PermanentDrawerLeft>
+						<Configuracion />
 					</RequireAuth>
 			},
 			{ path: "login", element: <Login /> },

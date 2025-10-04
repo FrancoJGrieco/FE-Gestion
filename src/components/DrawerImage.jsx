@@ -7,6 +7,7 @@ import PortraitIcon from '@mui/icons-material/Portrait';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import StoreIcon from '@mui/icons-material/Store';
 import SettingsIcon from '@mui/icons-material/Settings';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function DrawerImage({ name }) {
   if (name === 'Inicio') return <HomeIcon />
@@ -18,4 +19,6 @@ export default function DrawerImage({ name }) {
   if (name === 'Turnos') return <AssignmentTurnedInIcon />
   if (name === 'Tiendas') return <StoreIcon />
   if (name === 'Configuracion') return <SettingsIcon />
+
+  if (name === 'Cerrar Sesion') return <LogoutIcon />
 }

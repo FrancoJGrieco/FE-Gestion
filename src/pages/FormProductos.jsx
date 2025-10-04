@@ -7,7 +7,7 @@ export default function FormProductos() {
 	const type = 'productos'
 	const typeElemento = 'producto'
 	const { handleFieldChange, handleSubmit, form, id } = useFormFunctions({ type, typeElemento })
-	
+
 	return (
 		<>
 			{form && (
@@ -59,7 +59,7 @@ export default function FormProductos() {
 							<Button
 								variant="contained"
 								component={Link}
-								to='/productos'
+								to={`/${type}`}
 								sx={{ maxWidth: "100px" }}
 							>
 								atras

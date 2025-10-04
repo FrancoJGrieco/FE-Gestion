@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import useInitializeElemento from "./useInitializeElemento";
 import useForm from "./useForm";
-import CreateData from "../services/createData";
+import createData from "../services/createData";
 import updateDatum from "../services/updateDatum";
 import { useEffect } from "react";
 
@@ -15,12 +15,13 @@ export default function useFormFunctions({ type, typeElemento }) {
 
   useEffect(() => {
     setForm(elemento)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [elemento])
 
   const handleSubmit = async () => {
     try {
-      if (id) await updateDatum(form, type)
-      else await CreateData({ form, type })
+      if (id) await updateDatum({ form, type })
+      else await createData({ form, type })
       navigate(`/${type}`)
     } catch (err) {
       console.log(err)
@@ -29,5 +30,5 @@ export default function useFormFunctions({ type, typeElemento }) {
 
 
 
-  return { id, handleFieldChange, handleSubmit,form }
+  return { id, handleFieldChange, handleSubmit, form }
 }

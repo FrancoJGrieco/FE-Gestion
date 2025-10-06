@@ -67,20 +67,20 @@ export default function FormCuentas() {
 							label='Empleado'
 							onChange={handleFieldChange}
 						></TextField>
-						<Select
-							labelId="rol_id"
-							id="rol_id"
-							name="rol_id"
-							value={form?.rol_id ?? ''}
-							label="Rol"
-							onChange={handleFieldChange}
-						>
-							{listaRoles?.map((rol) => (
-								<MenuItem value={rol.id} key={rol.id}>{rol.nombre}</MenuItem>
-							))
-
-							}
-						</Select>
+						{listaRoles?.length > 0 && (
+							<Select
+								labelId="rol_id-label"
+								id="rol_id"
+								name="rol_id"
+								value={form?.rol_id ?? ""}
+								label="Rol"
+								onChange={handleFieldChange}
+							>
+								{listaRoles?.map((rol) => (
+									<MenuItem value={rol.id.toString()} key={rol.id}>{rol.nombre}</MenuItem>
+								))}
+							</Select>
+						)}
 						<Box
 							sx={{
 								display: 'flex',

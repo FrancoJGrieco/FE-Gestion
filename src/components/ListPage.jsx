@@ -5,7 +5,7 @@ import Elementos from "./Elementos";
 import PaginationBar from "./paginationBar";
 import SearchBar from "./SearchBar";
 
-export default function ListPage({ type, title, elementos, children }) {
+export default function ListPage({ type, title, children }) {
   return (
     <Container
       sx={{
@@ -44,11 +44,7 @@ export default function ListPage({ type, title, elementos, children }) {
         <SearchBar />
       </Box>
 
-      {/* Filtros */}
-      <Filters />
-
-      {/* Elementos */}
-      <Elementos elementos={elementos} >{children}</Elementos>
+      {children}
 
       {/* Barra de paginas */}
       <PaginationBar />

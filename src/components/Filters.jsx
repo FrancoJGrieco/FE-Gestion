@@ -1,7 +1,8 @@
-import { Container } from "@mui/material";
+import { Box, Container, MenuItem, Select } from "@mui/material";
 import CantidadSelector from "./CantidadSelector";
 
 export default function Filters() {
+
   return (
     <Container
       sx={{
@@ -14,7 +15,7 @@ export default function Filters() {
       {/* Cambio de cantidad de productos */}
       <CantidadSelector />
 
-     
+
     </Container>
   )
 }

@@ -1,4 +1,6 @@
+import Elementos from "../components/Elementos";
 import EmpleadoCard from "../components/EmpleadoCard";
+import EmpleadosFilters from "../components/EmpleadosFIlters";
 import ListPage from "../components/ListPage";
 import useFetch from "../hooks/useFetch";
 
@@ -7,8 +9,11 @@ export default function Empleados() {
   const { elementos: empleados } = useFetch(type)
 
   return (
-    <ListPage type={type} title={'Empleados'} elementos={empleados}>
-      {(empleado) => <EmpleadoCard empleado={empleado} />}
+    <ListPage type={type} title={'Empleados'}>
+      <>
+        <EmpleadosFilters />
+        <Elementos elementos={empleados} >{(empleado) => <EmpleadoCard empleado={empleado} />}</Elementos>
+      </>
     </ListPage>
   )
 }

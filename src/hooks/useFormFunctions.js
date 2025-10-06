@@ -8,11 +8,9 @@ import { forms } from "../services/forms";
 export default function useFormFunctions({ type, typeElemento }) {
   const [form, setForm] = useState(forms[type]);
   const navigate = useNavigate()
-  const location = useLocation();
-  const id = location.state?.id;
-  console.log('location',location)
-  const { elemento } = useInitializeElemento(id, type, typeElemento);
-  console.log('hola', elemento)
+  const location = useLocation()
+  const id = location.state?.id ?? null
+  const { elemento } = useInitializeElemento(id, type, typeElemento)
 
   useEffect(() => {
     setForm(elemento)  

@@ -10,15 +10,15 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function DrawerImage({ name }) {
-  if (name === 'Inicio') return <HomeIcon />
-  if (name === 'Ventas') return <ReceiptIcon />
-  if (name === 'Empleados') return <BadgeIcon />
-  if (name === 'Productos') return <InventoryIcon />
-  if (name === 'Roles') return <SupervisedUserCircleIcon />
-  if (name === 'Cuentas') return <PortraitIcon />
-  if (name === 'Turnos') return <AssignmentTurnedInIcon />
-  if (name === 'Tiendas') return <StoreIcon />
-  if (name === 'Configuracion') return <SettingsIcon />
+  if (name === 'Inicio') return <HomeIcon sx={{color: 'white'}}/>
+  if (name === 'Ventas') return <ReceiptIcon sx={{color: 'white'}}/>
+  if (name === 'Empleados') return <BadgeIcon sx={{color: 'white'}}/>
+  if (name === 'Productos') return <InventoryIcon sx={{color: 'white'}}/>
+  if (name === 'Roles') return <SupervisedUserCircleIcon sx={{color: 'white'}}/>
+  if (name === 'Cuentas') return <PortraitIcon sx={{color: 'white'}}/>
+  if (name === 'Turnos') return <AssignmentTurnedInIcon sx={{color: 'white'}}/>
+  if (name === 'Tiendas') return <StoreIcon sx={{color: 'white'}}/>
+  if (name === 'Configuracion') return <SettingsIcon sx={{color: 'white'}}/>
 
-  if (name === 'Cerrar Sesion') return <LogoutIcon />
+  if (name === 'Cerrar Sesion') return <LogoutIcon sx={{color: 'white'}}/>
 }

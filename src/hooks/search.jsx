@@ -11,9 +11,14 @@ export function SearchProvider({ children }) {
     }
   })
   const [buscar, setBuscar] = useState(false)
+  const [showFilters, setShowFilters] = useState(false)
 
   const buscarElemento = () => {
     setBuscar(!buscar)
+  }
+
+  const changeVisibility = ()=>{
+    setShowFilters(!showFilters)
   }
 
   const handleFilterInputChange = (e, page) => {
@@ -28,7 +33,9 @@ export function SearchProvider({ children }) {
       buscarElemento,
       handleFilterInputChange,
       buscar,
-      setBuscar
+      setBuscar,
+      showFilters,
+      changeVisibility
     }}>
       {children}
     </SearchContext.Provider>

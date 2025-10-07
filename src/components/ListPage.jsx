@@ -1,9 +1,13 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, IconButton, Typography } from "@mui/material";
 import CreateButton from "./CreateButton";
 import SearchBar from "./SearchBar";
 import PaginationBar from "./PaginationBar";
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import { useContext } from "react";
+import { SearchContext } from "../hooks/search";
 
 export default function ListPage({ type, title, children }) {
+  const { changeVisibility} = useContext(SearchContext)
   return (
     <Container
       sx={{
@@ -39,11 +43,20 @@ export default function ListPage({ type, title, children }) {
         <CreateButton type={type} />
 
         {/* Busqueda de productos */}
-        <SearchBar type={type} />
+
+        <Box
+          sx={{
+            display:'flex',
+            flexDirection: 'row',
+          }}
+        >
+          <IconButton onClick={changeVisibility}><FilterAltIcon /></IconButton>
+          <SearchBar type={type} />
+        </Box>
+
       </Box>
 
       {children}
-
       {/* Barra de paginas */}
       <PaginationBar />
     </Container>

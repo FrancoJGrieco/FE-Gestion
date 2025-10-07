@@ -1,16 +1,12 @@
 import { Box, Button, Container, MenuItem, Select } from "@mui/material";
 import CantidadSelector from "./CantidadSelector";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { SearchContext } from "../hooks/search";
 
 export default function EmpleadosFilters() {
-  const [rolFiltro, setRolFiltro] = useState('')
   const [listaRoles, setListaRoles] = useState([])
-
-  const handleFieldChange = (e) => {
-    const { value } = e.target
-    setRolFiltro(value)
-  }
+  const { handleFilterInputChange, filtros, buscarElemento } = useContext(SearchContext)
 
   const getRoles = async () => {
     const { data } = await axios.get(import.meta.env.VITE_API_URL + 'roles/10000/1/', { withCredentials: true })
@@ -19,12 +15,6 @@ export default function EmpleadosFilters() {
   useEffect(() => {
     getRoles()
   }, [])
-
-  const buscarPorRol = async () => {
-    const { data } = await axios.get(import.meta.env.VITE_API_URL + "/" + rolFiltro)
-    console.log(data)
-    //hacer un context para manejar a los empleados
-  }
 
   return (
     <Box
@@ -41,16 +31,20 @@ export default function EmpleadosFilters() {
             labelId="rol_id-label"
             id="rol_id"
             name="rol_id"
-            value={rolFiltro ?? ""}
+            value={filtros.empleados.rol_id ?? ""}
             label="Rol"
-            onChange={handleFieldChange}
+            onChange={(e)=>{handleFilterInputChange(e, 'empleados')}}
+            sx={{
+              width: '250px'
+            }}
           >
+            <MenuItem value={null}>Ninguno</MenuItem>
             {listaRoles.map((rol) => (
               <MenuItem value={rol.id}>{rol.nombre}</MenuItem>
             ))}
           </Select>
         )}
-        <Button onClick={buscarPorRol}></Button>
+        <Button onClick={buscarElemento}>Buscar</Button>
       </Box>
       <CantidadSelector />
     </Box>

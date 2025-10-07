@@ -2,8 +2,8 @@ import { Button, Container, TextField, Typography } from "@mui/material";
 import { SearchContext } from "../hooks/search";
 import { useContext } from "react";
 
-export default function SearchBar() {
-  const { searchInput, handleSearchInputChange, buscarElemento } = useContext(SearchContext)
+export default function SearchBar({ type }) {
+  const { filtros, handleFilterInputChange, buscarElemento } = useContext(SearchContext)
   return (
     <Container
       sx={{
@@ -16,10 +16,10 @@ export default function SearchBar() {
       }}
     >
       <TextField
-        name='product-filter'
+        name='busqueda'
         label='Buscar'
-        value={searchInput || ''}
-        onChange={handleSearchInputChange}
+        value={filtros[type].busqueda || ''}
+        onChange={(e) => {handleFilterInputChange(e, [type])}}
         sx={{
           width: 250,
         }}

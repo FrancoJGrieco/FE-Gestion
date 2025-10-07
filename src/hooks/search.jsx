@@ -1,29 +1,34 @@
-import { createContext, useContext, useState } from "react"
-import { PaginationContext } from "./pagination";
+import { createContext, useState } from "react"
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const SearchContext = createContext();
 
 export function SearchProvider({ children }) {
-  const [busqueda, setBusqueda] = useState('')
-  const [searchInput, setSearchInput] = useState('')
-  const { setPagina } = useContext(PaginationContext)
+  const [filtros, setFiltros] = useState({
+    empleados: {
+      busqueda: '',
+      rol_id: null
+    }
+  })
+  const [buscar, setBuscar] = useState(false)
 
   const buscarElemento = () => {
-    setPagina(1)
-    setBusqueda(searchInput)
+    setBuscar(!buscar)
   }
 
-  const handleSearchInputChange = (e) => {
-    setSearchInput(e.target.value)
+  const handleFilterInputChange = (e, page) => {
+    const { name, value } = e.target
+    setFiltros((prevState) => ({ ...prevState, [page]: { ...prevState[page], [name]: value } }))
+    console.log(filtros.empleados)
   }
 
   return (
     <SearchContext.Provider value={{
-      busqueda,
-      searchInput,
+      filtros,
       buscarElemento,
-      handleSearchInputChange
+      handleFilterInputChange,
+      buscar,
+      setBuscar
     }}>
       {children}
     </SearchContext.Provider>

@@ -1,9 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
 import CreateButton from "./CreateButton";
-import Filters from "./Filters";
-import Elementos from "./Elementos";
-import PaginationBar from "./paginationBar";
 import SearchBar from "./SearchBar";
+import PaginationBar from "./PaginationBar";
 
 export default function ListPage({ type, title, children }) {
   return (
@@ -41,7 +39,7 @@ export default function ListPage({ type, title, children }) {
         <CreateButton type={type} />
 
         {/* Busqueda de productos */}
-        <SearchBar />
+        <SearchBar type={type} />
       </Box>
 
       {children}

@@ -10,10 +10,9 @@ export default function useFetch(type) {
 
   const getElementos = async () => {
     const { data } = await axios.get(import.meta.env.VITE_API_URL + type + "/" + cantidad + "/" + pagina, {
-      params: filtros,
+      params: filtros[type],
       withCredentials: true
     })
-    console.log(data)
     setElementos(data[type])
     setMaxPaginas(data.count / cantidad)
   }

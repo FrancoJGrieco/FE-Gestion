@@ -6,7 +6,7 @@ import { SearchContext } from "../hooks/search";
 
 export default function EmpleadosFilters() {
   const [listaRoles, setListaRoles] = useState([])
-  const { handleFilterInputChange, filtros, buscarElemento } = useContext(SearchContext)
+  const { handleFilterInputChange, filtros } = useContext(SearchContext)
 
   const getRoles = async () => {
     const { data } = await axios.get(import.meta.env.VITE_API_URL + 'roles/10000/1/', { withCredentials: true })
@@ -44,7 +44,6 @@ export default function EmpleadosFilters() {
             ))}
           </Select>
         )}
-        <Button onClick={buscarElemento}>Buscar</Button>
       </Box>
       <CantidadSelector />
     </Box>

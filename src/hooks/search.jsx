@@ -8,6 +8,9 @@ export function SearchProvider({ children }) {
     empleados: {
       busqueda: '',
       rol_id: null
+    },
+    productos: {
+      busqueda: '',
     }
   })
   const [buscar, setBuscar] = useState(false)
@@ -24,7 +27,7 @@ export function SearchProvider({ children }) {
   const handleFilterInputChange = (e, page) => {
     const { name, value } = e.target
     setFiltros((prevState) => ({ ...prevState, [page]: { ...prevState[page], [name]: value } }))
-    console.log(filtros.empleados)
+    console.log(filtros['productos'])
   }
 
   return (

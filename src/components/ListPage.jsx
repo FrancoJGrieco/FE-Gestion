@@ -53,7 +53,6 @@ export default function ListPage({ type, title, children }) {
           <IconButton onClick={changeVisibility}><FilterAltIcon /></IconButton>
           <SearchBar type={type} />
         </Box>
-
       </Box>
 
       {children}

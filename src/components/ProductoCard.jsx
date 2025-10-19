@@ -43,6 +43,8 @@ export default function ProductoCard({ producto }) {
 						{(producto.name.length > 14) ? '...' : false}
 					</Typography>
 					<Popover
+						disableAutoFocus
+						disableEnforceFocus
 						id="mouse-over-popover"
 						sx={{ pointerEvents: 'none' }}
 						open={open}

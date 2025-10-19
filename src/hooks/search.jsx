@@ -11,7 +11,19 @@ export function SearchProvider({ children }) {
     },
     productos: {
       busqueda: '',
-    }
+    },
+    roles: {
+      busqueda: '',
+    },
+    ventas: {
+      busqueda: '',
+    },
+    cuentas: {
+      busqueda: '',
+    },
+    turnos: {
+      busqueda: '',
+    },
   })
   const [buscar, setBuscar] = useState(false)
   const [showFilters, setShowFilters] = useState(false)
@@ -27,7 +39,6 @@ export function SearchProvider({ children }) {
   const handleFilterInputChange = (e, page) => {
     const { name, value } = e.target
     setFiltros((prevState) => ({ ...prevState, [page]: { ...prevState[page], [name]: value } }))
-    console.log(filtros['productos'])
   }
 
   return (

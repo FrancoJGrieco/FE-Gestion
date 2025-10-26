@@ -80,3 +80,13 @@ npm run dev
 ┣ 📄 index.html
 ┗ 📄 .env.example
 ```
+
+### Licencia
+
+Este proyecto fue desarrollado con fines académicos.
+Universidad Tecnológica Nacional – Instituto Nacional Superior del Profesorado Técnico.
+
+### Contacto
+
+Franco Jesús Grieco
+📩 franco.grieco@alu.inspt.utn.edu.ar

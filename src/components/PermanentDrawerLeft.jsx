@@ -20,7 +20,7 @@ export default function PermanentDrawerLeft({ children }) {
 	const drawerWidth = 240;
 	const optionList = [
 		{
-			name: 'Inicio',
+			name: 'Dashboard',
 			link: 'home'
 		},
 		{

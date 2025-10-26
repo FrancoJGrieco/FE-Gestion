@@ -10,6 +10,8 @@ export default function FormCuentas() {
 	const typeElemento = 'cuenta'
 	const { handleFieldChange, handleSubmit, form, id } = useFormFunctions({ type, typeElemento })
 
+	console.log(form)
+
 	const [listaRoles, setListaRoles] = useState([])
 	const getRoles = async () => {
 		const { data } = await axios.get(import.meta.env.VITE_API_URL + 'roles/10000/1/', { withCredentials: true })
@@ -34,14 +36,14 @@ export default function FormCuentas() {
 					>
 						<TextField
 							value={form?.user_e ?? ''}
-							name="user"
+							name="user_e"
 							label="Usuario"
 							onChange={handleFieldChange}
 						/>
 						{id === null ?
 							<TextField
 								value={form?.password_e ?? ''}
-								name='password'
+								name='password_e'
 								label='Contraseña'
 								onChange={handleFieldChange}
 							></TextField>

@@ -57,7 +57,7 @@ export default function Home() {
 				gap: 2
 			}}
 		>
-			<Typography variant="h3" sx={{ margin: 'auto' }}>Home</Typography>
+			<Typography variant="h3" sx={{ margin: 'auto' }}>Dashboard</Typography>
 			{/* grafico con fecha */}
 			<Box
 				sx={{

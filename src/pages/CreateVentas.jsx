@@ -1,6 +1,7 @@
 import { Box, Button, Container, Select, TextField } from "@mui/material";
 import CreateData from "../services/createData";
 import { useState } from "react";
+import axios from "axios";
 
 export default function CreateVentas() {
   const [productosVenta, setProductosVentas] = useState([])
@@ -19,7 +20,12 @@ export default function CreateVentas() {
     }));
   };
 
-  const agregarProductoLista = () => {
+  const agregarProductoLista = async () => {
+    console.log('hola')
+    console.log(import.meta.env.VITE_API_URL + "productos/nombre/" + form.producto)
+    const { data } = await axios.get(import.meta.env.VITE_API_URL + "productos/nombre/" + form.producto, { withCredentials: true })
+
+    console.log('hola:', data)
     // const productoFiltrado = productos.find((producto) => producto.codigo === form.producto)
 
     // const item = { producto: productoFiltrado, cantidad: form.cantidad }

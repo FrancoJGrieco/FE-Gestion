@@ -1,4 +1,4 @@
-import HomeIcon from '@mui/icons-material/Home';
+import GridViewIcon from '@mui/icons-material/GridView';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import BadgeIcon from '@mui/icons-material/Badge';
 import InventoryIcon from '@mui/icons-material/Inventory';
@@ -10,7 +10,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function DrawerImage({ name }) {
-  if (name === 'Inicio') return <HomeIcon sx={{color: 'white'}}/>
+  if (name === 'Dashboard') return <GridViewIcon sx={{color: 'white'}}/>
   if (name === 'Ventas') return <ReceiptIcon sx={{color: 'white'}}/>
   if (name === 'Empleados') return <BadgeIcon sx={{color: 'white'}}/>
   if (name === 'Productos') return <InventoryIcon sx={{color: 'white'}}/>

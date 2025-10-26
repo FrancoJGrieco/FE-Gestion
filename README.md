@@ -89,4 +89,4 @@ Universidad Tecnológica Nacional – Instituto Nacional Superior del Profesorad
 ### Contacto
 
 Franco Jesús Grieco
-📩 franco.grieco@alu.inspt.utn.edu.ar
+mail: franco.grieco@alu.inspt.utn.edu.ar

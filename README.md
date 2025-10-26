@@ -1,4 +1,4 @@
-# 🌿 Gestor de Supermercado
+# Gestor de Supermercado
 
 **Trabajo Final de Seminario 3-603 – UTN-INSPT**  
 Autor: **Franco Jesús Grieco**  
@@ -6,7 +6,7 @@ Docente de la cátedra: **Prof. Daniel Mernoz**
 
 ---
 
-## 📖 Descripción
+## Descripción
 
 El **Gestor de Supermercado** es un sistema web inspirado en la plataforma **Clover**, desarrollado como proyecto final de la asignatura Seminario del INSPT.  
 El objetivo principal es **replicar las funcionalidades centrales** de la aplicación original, utilizando tecnologías actuales del ecosistema JavaScript.
@@ -15,7 +15,7 @@ El proyecto apunta a demostrar el dominio de un **ciclo completo de desarrollo**
 
 ---
 
-## 🎯 Objetivos
+## Objetivos
 
 - Digitalizar el proceso de administración y registro de usuarios y entidades del sistema.
 - Implementar un backend con **API REST** y **autenticación JWT**.
@@ -26,7 +26,7 @@ El proyecto apunta a demostrar el dominio de un **ciclo completo de desarrollo**
 
 ---
 
-## 🧩 Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 **Frontend**
 - React + Vite
@@ -41,7 +41,7 @@ El proyecto apunta a demostrar el dominio de un **ciclo completo de desarrollo**
 
 ---
 
-## ⚙️ Instalación y Ejecución
+## Instalación y Ejecución
 
 ### 1. Clonar el repositorio
 ```bash

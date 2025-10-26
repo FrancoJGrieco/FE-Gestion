@@ -6,18 +6,21 @@ import { SearchContext } from "./search"
 export default function useFetch(type) {
   const [elementos, setElementos] = useState([])
   const { setMaxPaginas, cantidad, pagina } = useContext(PaginationContext)
-  const { busqueda } = useContext(SearchContext)
+  const { filtros, buscar } = useContext(SearchContext)
 
   const getElementos = async () => {
-    const datos = await axios.get(import.meta.env.VITE_API_URL + type + '/' + cantidad + "/" + pagina + "/" + busqueda)
-    setElementos(datos.data[type])
-    setMaxPaginas(datos.data.count / cantidad)
+    const { data } = await axios.get(import.meta.env.VITE_API_URL + type + "/" + cantidad + "/" + pagina, {
+      params: filtros[type],
+      withCredentials: true
+    })
+    setElementos(data[type])
+    setMaxPaginas(data.count / cantidad)
   }
 
   useEffect(() => {
     getElementos()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pagina, cantidad, busqueda])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pagina, cantidad, buscar])
 
   return { elementos }
 }

@@ -30,7 +30,8 @@ export function PaginationProvider({ children }) {
       siguiente,
       cambiarCantidad,
       setMaxPaginas,
-      setPagina
+      setPagina,
+      setCantidad
     }}>
       {children}
     </PaginationContext.Provider>

@@ -7,7 +7,7 @@ import { AuthContext } from "../hooks/auth";
 export default function Login() {
 
   const navigate = useNavigate()
-  const {loginForm, updateLoginFormField, login} = useContext(AuthContext)
+  const { loginForm, updateLoginFormField, login } = useContext(AuthContext)
   const [error, setError] = useState('')
 
   const handleLogin = async (e) => {
@@ -23,32 +23,41 @@ export default function Login() {
   if (!loginForm) return <></>
   return (
     <Container
-      component='form'
-      onSubmit={handleLogin}
-      maxWidth='sm'
       sx={{
-        display: 'flex',
+        display:'flex',
         flexDirection: 'column',
-        gap: '10px'
-      }}>
-      <Typography variant='h4'>Login</Typography>
+        justifyContent: 'center',
+        height: '100vh'
+      }}
+    >
+      <Container
+        component='form'
+        onSubmit={handleLogin}
+        maxWidth='sm'
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px'
+        }}>
+        <Typography variant='h4'>Login</Typography>
 
-      <TextField
-        name='user'
-        label='Usuario'
-        type='text'
-        value={loginForm.user || ''}
-        onChange={updateLoginFormField}
-      />
-      <TextField
-        name='password'
-        label='Contraseña'
-        type='password'
-        value={loginForm.password || ''}
-        onChange={updateLoginFormField}
-      />
-      {error && <Typography color="error">{error}</Typography>}
-      <Button type='submit'>Login</Button>
+        <TextField
+          name='user'
+          label='Usuario'
+          type='text'
+          value={loginForm.user || ''}
+          onChange={updateLoginFormField}
+        />
+        <TextField
+          name='password'
+          label='Contraseña'
+          type='password'
+          value={loginForm.password || ''}
+          onChange={updateLoginFormField}
+        />
+        {error && <Typography color="error">{error}</Typography>}
+        <Button type='submit'>Login</Button>
+      </Container>
     </Container>
   )
 }

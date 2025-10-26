@@ -7,8 +7,10 @@ export default function Elementos({ elementos, children }) {
       sx={{
         display: "flex",
         flexWrap: "wrap",
-        gap: 1,
-        marginTop: 5
+        gap: 2,
+        justifyContent: 'center',
+        marginLeft: 'auto',
+        marginRight: 'auto',
       }}
     >
       {elementos?.map((elemento) => (

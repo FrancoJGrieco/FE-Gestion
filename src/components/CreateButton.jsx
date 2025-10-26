@@ -8,12 +8,14 @@ export default function CreateButton({ type }) {
         width: 'fit-content',
         height: 'fit-content',
         margin: 0,
-        marginTop: 5
+        marginTop: 0,
+        padding: 0
       }}
     >
       <Button
         component={Link}
         to={`/${type}/create`}
+        variant="contained"
       >
         Create
       </Button>

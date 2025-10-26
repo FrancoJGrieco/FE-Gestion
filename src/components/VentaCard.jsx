@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import removeDatum from "../services/removeDatum";
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
-export default function CuentaCard({ cuenta }) {
-	const type = 'cuentas'
+export default function VentaCard({ venta }) {
+	const type = 'ventas'
 	return (
 		<Box
 		sx={{
@@ -16,13 +16,13 @@ export default function CuentaCard({ cuenta }) {
 		>
 			<Box
 				component={Link}
-				to={`/cuentas/update/${cuenta.id}`}
-				state={{ id: cuenta.id }}
+				to={`/ventas/info/${venta.id}`}
+				state={{ venta: venta }}
 				sx={{ textDecoration: 'none' }}
 			>
-				<Typography variant="h6">{cuenta.user_e}</Typography>
+				<Typography variant="h6">{venta.numero_ticket} - {venta.total}</Typography>
 			</Box>
-			<IconButton onClick={()=>removeDatum({id: cuenta.id, type})}><RemoveCircleIcon/></IconButton>
+			<IconButton onClick={()=>removeDatum({id: venta.id, type})}><RemoveCircleIcon/></IconButton>
 		</Box>
 	);
 }

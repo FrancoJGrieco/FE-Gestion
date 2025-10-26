@@ -83,10 +83,10 @@ npm run dev
 
 ### Licencia
 
-Este proyecto fue desarrollado con fines académicos.
+Este proyecto fue desarrollado con fines académicos.  
 Universidad Tecnológica Nacional – Instituto Nacional Superior del Profesorado Técnico.
 
 ### Contacto
 
-Franco Jesús Grieco
+Franco Jesús Grieco  
 mail: franco.grieco@alu.inspt.utn.edu.ar

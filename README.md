@@ -1,4 +1,4 @@
-# 🌿 Clon Clover
+# 🌿 Gestor de Supermercado
 
 **Trabajo Final de Seminario 3-603 – UTN-INSPT**  
 Autor: **Franco Jesús Grieco**  
